@@ -12,14 +12,12 @@ export default {
       },
     },
     fontSize: {
-      display: {
-        "2xl": ["4.5rem", { lineHeight: "5.625rem", tracking: "-2%" }],
-        xl: ["3.75rem", { lineHeight: "4.5rem", tracking: "-2%" }],
-        lg: ["3rem", { lineHeight: "3.75rem", tracking: "-2%" }],
-        md: ["2.25rem", { lineHeight: "2.75rem", tracking: "-2%" }],
-        sm: ["1.875rem", { lineHeight: "2.375rem" }],
-        xs: ["1.5rem", { lineHeight: "2rem" }],
-      },
+      "display-2xl": ["4.5rem", { lineHeight: "5.625rem", tracking: "-2%" }],
+      "display-xl": ["3.75rem", { lineHeight: "4.5rem", tracking: "-2%" }],
+      "display-lg": ["3rem", { lineHeight: "3.75rem", tracking: "-2%" }],
+      "display-md": ["2.25rem", { lineHeight: "2.75rem", tracking: "-2%" }],
+      "display-sm": ["1.875rem", { lineHeight: "2.375rem" }],
+      "display-xs": ["1.5rem", { lineHeight: "2rem" }],
       xl: ["1.25rem", { lineHeight: "1.875rem" }],
       lg: ["1.125rem", { lineHeight: "1.75rem" }],
       md: ["1rem", { lineHeight: "1.5rem" }],
@@ -30,6 +28,7 @@ export default {
       baijamjuree: ["Bai Jamjuree", "Sarabun", "sans-serif"],
       sriracha: ["Sriracha", "Sarabun", "sans-serif"],
       sarabun: ["Sarabun", "sans-serif"],
+      sans: ["Noto Sans Thai", "sans-serif"],
     },
     colors: {
       text: {
@@ -100,11 +99,6 @@ export default {
       },
     },
     extend: {
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

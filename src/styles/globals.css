@@ -267,9 +267,6 @@
 
 @layer base {
   * {
-    @apply font-sarabun bg-bg-primary text-text-primary;
-  }
-  body {
-    @apply bg-bg-primary;
+    @apply font-sarabun text-text-primary;
   }
 }

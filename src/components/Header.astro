@@ -1,9 +1,11 @@
 ---
 import Navbar from "./Navbar";
 import { SITE_TITLE } from "../consts";
+import LandingGrid from "./LandingGrid.astro";
 ---
 
 <header>
+  <LandingGrid />
   <nav>
     <h2 class="text-xl font-semibold"><a href="/">{SITE_TITLE}</a></h2>
     <Navbar data={[]} client:load />

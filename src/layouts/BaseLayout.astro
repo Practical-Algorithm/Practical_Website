@@ -4,13 +4,29 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 
-const { title, description } = Astro.props;
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props as Props;
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
     <BaseHead title={title} description={description} />
-    <script is:inline>
+    <!-- <script is:inline>
       const theme = (() => {
         if (
           typeof localStorage !== "undefined" &&
@@ -33,10 +49,10 @@ const { title, description } = Astro.props;
       }
 
       window.localStorage.setItem("theme", theme);
-    </script>
+    </script> -->
   </head>
 
-  <body>
+  <body class="bg-bg-primary">
     <Header />
     <main>
       <slot />

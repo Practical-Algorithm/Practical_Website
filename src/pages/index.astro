@@ -1,65 +1,55 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import "@/styles/globals.css";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Button } from "@/components/ui/button";
+import { Image } from "astro:assets";
+import landingDuck from "../../public/images/landing_duck.png";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main class="font-baijamjuree">
-      <h1>🧑‍🚀 Hello, Astronaut!</h1>
-      <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template. This template serves as a lightweight, minimally-styled starting
-        point for anyone looking to build a personal website, blog, or portfolio
-        with Astro.
-      </p>
-      <p>
-        This template comes with a few integrations already configured in your
-        <code>astro.config.mjs</code> file. You can customize your setup with
-        <a href="https://astro.build/integrations">Astro Integrations</a> to add
-        tools like Tailwind, React, or Vue to your project.
-      </p>
-      <p>Here are a few ideas on how to get started with the template:</p>
-      <ul>
-        <li>Edit this page in <code>src/pages/index.astro</code></li>
-        <li>
-          Edit the site header items in <code>src/components/Header.astro</code>
-        </li>
-        <li>
-          Add your name to the footer in <code>src/components/Footer.astro</code
-          >
-        </li>
-        <li>
-          Check out the included blog posts in <code>src/content/blog/</code>
-        </li>
-        <li>
-          Customize the blog post page layout in <code
-            >src/layouts/BlogPost.astro</code
-          >
-        </li>
-      </ul>
-      <p>
-        Have fun! If you get stuck, remember to <a
-          href="https://docs.astro.build/"
-          >read the docs
-        </a> or <a href="https://astro.build/chat">join us on Discord</a> to ask
-        questions.
-      </p>
-      <p>
-        Looking for a blog template with a bit more personality? Check out <a
-          href="https://github.com/Charca/astro-blog-template"
-          >astro-blog-template
-        </a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-      </p>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="landing mt-24 space-y-16">
+    <header class="flex flex-col gap-12 items-center mx-8">
+      <div class="flex flex-col gap-6 text-center items-center">
+        <div class="flex flex-col gap-3 w-[804px]">
+          <h2 class="text-md font-semibold text-text-brand-secondary">
+            Practical Algorithms · เรื่องเล่าชาวอัลกอ
+          </h2>
+          <h1 class="text-display-2xl font-sans font-semibold">
+            ความรู้เนื้อหาอัลกอลิทึมแบบใช้ได้จริง
+          </h1>
+        </div>
+        <p class="text-xl text-text-tertiary font-baijamjuree">
+          เริ่มเรียนอัลกอลิทึมง่ายๆด้วยตัวเองกันเลย เขียนโดยพี่ๆค่าย สอวน.&สสวท.
+          คอมพิวเตอร์
+        </p>
+      </div>
+      <class class="cta space-x-3">
+        <Button
+          className="font-baijamjuree font-semibold bg-[rgba(var(--base---white))] h-fit w-fit border border-[rgba(var(--gray-light-mode--300))] text-[rgba(var(--gray-light-mode--700))]  px-[22px] py-4 text-lg rounded-[8px]"
+          >Demo</Button
+        >
+        <Button
+          className="font-baijamjuree font-semibold bg-[rgba(var(--base---white))] h-fit w-fit border border-[rgba(var(--gray-light-mode--300))] text-[rgba(var(--gray-light-mode--700))]  px-[22px] py-4 text-lg rounded-[8px]"
+          >Facebook</Button
+        >
+        <Button
+          className="font-baijamjuree bg-[rgba(var(--brand--600))] h-fit w-fit hover:bg-[rgba(var(--brand--700))] rounded-[8px] text-text-white px-[22px] py-4 font-semibold text-lg"
+          >เริ่มเรียนกันเลย!</Button
+        >
+        <section></section>
+      </class>
+    </header>
+    <div class="flex justify-center">
+      <Image
+        quality={50}
+        format="webp"
+        width={574}
+        height={369}
+        src={landingDuck}
+        alt="Practical Algorithm Landing Image"
+      />
+    </div>
+    <div></div>
+  </div></BaseLayout
+>
