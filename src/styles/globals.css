@@ -175,6 +175,71 @@
     --text-error-primary: var(--error--600);
 
     --text-white: var(--base---white);
+
+    /* Components */
+
+    --nav-item-button-icon-fg: var(--gray-light-mode--500);
+    --nav-item-button-icon-fg_active: var(--gray-light-mode--700);
+    --nav-item-icon-fg: var(--gray-light-mode--500);
+    --nav-item-icon-fg_active: var(--gray-light-mode--500);
+
+    --button-primary-bg: var(--brand--600);
+    --button-primary-bg_hover: var(--brand--700);
+    --button-primary-border: var(--brand--600);
+    --button-primary-border_hover: var(--brand--700);
+    --button-primary-fg: var(--base---white);
+    --button-primary-fg_hover: var(--base---white);
+
+    --button-primary-error-bg: var(--error--600);
+    --button-primary-error-bg_hover: var(--error--700);
+    --button-primary-error-border: var(--error--600);
+    --button-primary-error-border_hover: var(--error--700);
+    --button-primary-error-fg: var(--base---white);
+    --button-primary-error-fg_hover: var(--base---white);
+
+    --button-secondary-bg: var(--base---white);
+    --button-secondary-bg_hover: var(--gray-light-mode--50);
+    --button-secondary-border: var(--gray-light-mode--300);
+    --button-secondary-border_hover: var(--gray-light-mode--300);
+    --button-secondary-fg: var(--gray-light-mode--700);
+    --button-secondary-fg_hover: var(--gray-light-mode--800);
+
+    --button-secondary-color-bg: var(--base---white);
+    --button-secondary-color-bg_hover: var(--brand--50);
+    --button-secondary-color-border: var(--brand--300);
+    --button-secondary-color-border_hover: var(--brand--300);
+    --button-secondary-color-fg: var(--brand--700);
+    --button-secondary-color-fg_hover: var(--brand--800);
+
+    --button-secondary-error-bg: var(--base---white);
+    --button-secondary-error-bg_hover: var(--error--50);
+    --button-secondary-error-border: var(--error--300);
+    --button-secondary-error-border_hover: var(--error--300);
+    --button-secondary-error-fg: var(--error--700);
+    --button-secondary-error-fg_hover: var(--error--800);
+
+    --button-tertiary-bg_hover: var(--gray-light-mode--50);
+    --button-tertiary-fg: var(--gray-light-mode--600);
+    --button-tertiary-fg_hover: var(--gray-light-mode--700);
+
+    --button-tertiary-color-bg_hover: var(--brand--50);
+    --button-tertiary-color-fg: var(--brand--700);
+    --button-tertiary-color-fg_hover: var(--brand--800);
+
+    --button-tertiary-error-bg_hover: var(--error--50);
+    --button-tertiary-error-fg: var(--error--700);
+    --button-tertiary-error-fg_hover: var(--error--800);
+
+    --footer-badge-bg: var(--success--50);
+    --footer-badge-border: var(--success--200);
+    --footer-badge-fg: var(--success--700);
+    --footer-button-fg: var(--brand--200);
+    --footer-button-fg_hover: var(--base---white);
+
+    --header-abstract-100-bg: var(--brand--100);
+    --header-abstract-200-bg: var(--brand--200);
+    --header-abstract-300-bg: var(--brand--300);
+    --header-abstract-50-bg: var(--brand--50);
   }
 
   .dark {

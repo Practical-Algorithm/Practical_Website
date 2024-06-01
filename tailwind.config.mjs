@@ -25,10 +25,10 @@ export default {
       xs: ["0.75rem", { lineHeight: "1.125rem" }],
     },
     fontFamily: {
-      baijamjuree: ["Bai Jamjuree", "Sarabun", "sans-serif"],
+      baijamjuree: ["Bai-jamjuree", "Sarabun", "sans-serif"],
       sriracha: ["Sriracha", "Sarabun", "sans-serif"],
       sarabun: ["Sarabun", "sans-serif"],
-      sans: ["Noto Sans Thai", "sans-serif"],
+      sans: ["Noto-sans-thai", "sans-serif"],
     },
     colors: {
       text: {
