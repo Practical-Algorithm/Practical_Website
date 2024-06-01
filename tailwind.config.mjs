@@ -97,6 +97,120 @@ export default {
           solid: "rgba(var(--bg-warning-solid), <alpha-value>)",
         },
       },
+      nav: {
+        item: {
+          button: {
+            icon: {
+              fg: "rgba(var(--nav-item-button-icon-fg), <alpha-value>)",
+              fg_active:
+                "rgba(var(--nav-item-button-icon-fg_active), <alpha-value>)",
+            },
+          },
+          icon: {
+            fg: "rgba(var(--nav-item-icon-fg), <alpha-value>)",
+            fg_active: "rgba(var(--nav-item-icon-fg_active), <alpha-value>)",
+          },
+        },
+      },
+      button: {
+        primary: {
+          bg: "rgba(var(--button-primary-bg), <alpha-value>)",
+          bg_hover: "rgba(var(--button-primary-bg_hover), <alpha-value>)",
+          border: "rgba(var(--button-primary-border), <alpha-value>)",
+          border_hover:
+            "rgba(var(--button-primary-border_hover), <alpha-value>)",
+          fg: "rgba(var(--button-primary-fg), <alpha-value>)",
+          fg_hover: "rgba(var(--button-primary-fg_hover), <alpha-value>)",
+          error: {
+            bg: "rgba(var(--button-primary-error-bg), <alpha-value>)",
+            bg_hover:
+              "rgba(var(--button-primary-error-bg_hover), <alpha-value>)",
+            border: "rgba(var(--button-primary-error-border), <alpha-value>)",
+            border_hover:
+              "rgba(var(--button-primary-error-border_hover), <alpha-value>)",
+            fg: "rgba(var(--button-primary-error-fg), <alpha-value>)",
+            fg_hover:
+              "rgba(var(--button-primary-error-fg_hover), <alpha-value>)",
+          },
+        },
+        secondary: {
+          bg: "rgba(var(--button-secondary-bg), <alpha-value>)",
+          bg_hover: "rgba(var(--button-secondary-bg_hover), <alpha-value>)",
+          border: "rgba(var(--button-secondary-border), <alpha-value>)",
+          border_hover:
+            "rgba(var(--button-secondary-border_hover), <alpha-value>)",
+          fg: "rgba(var(--button-secondary-fg), <alpha-value>)",
+          fg_hover: "rgba(var(--button-secondary-fg_hover), <alpha-value>)",
+          color: {
+            bg: "rgba(var(--button-secondary-color-bg), <alpha-value>)",
+            bg_hover:
+              "rgba(var(--button-secondary-color-bg_hover), <alpha-value>)",
+            border: "rgba(var(--button-secondary-color-border), <alpha-value>)",
+            border_hover:
+              "rgba(var(--button-secondary-color-border_hover), <alpha-value>)",
+            fg: "rgba(var(--button-secondary-color-fg), <alpha-value>)",
+            fg_hover:
+              "rgba(var(--button-secondary-color-fg_hover), <alpha-value>)",
+          },
+          error: {
+            bg: "rgba(var(--button-secondary-error-bg), <alpha-value>)",
+            bg_hover:
+              "rgba(var(--button-secondary-error-bg_hover), <alpha-value>)",
+            border: "rgba(var(--button-secondary-error-border), <alpha-value>)",
+            border_hover:
+              "rgba(var(--button-secondary-error-border_hover), <alpha-value>)",
+            fg: "rgba(var(--button-secondary-error-fg), <alpha-value>)",
+            fg_hover:
+              "rgba(var(--button-secondary-error-fg_hover), <alpha-value>)",
+          },
+        },
+        tertiary: {
+          bg_hover: "rgba(var(--button-tertiary-bg_hover), <alpha-value>)",
+          fg: "rgba(var(--button-tertiary-fg), <alpha-value>)",
+          fg_hover: "rgba(var(--button-tertiary-fg_hover), <alpha-value>)",
+          color: {
+            bg_hover:
+              "rgba(var(--button-tertiary-color-bg_hover), <alpha-value>)",
+            fg: "rgba(var(--button-tertiary-color-fg), <alpha-value>)",
+            fg_hover:
+              "rgba(var(--button-tertiary-color-fg_hover), <alpha-value>)",
+          },
+          error: {
+            bg_hover:
+              "rgba(var(--button-tertiary-error-bg_hover), <alpha-value>)",
+            fg: "rgba(var(--button-tertiary-error-fg), <alpha-value>)",
+            fg_hover:
+              "rgba(var(--button-tertiary-error-fg_hover), <alpha-value>)",
+          },
+        },
+      },
+      footer: {
+        badge: {
+          bg: "rgba(var(--footer-badge-bg), <alpha-value>)",
+          border: "rgba(var(--footer-badge-border), <alpha-value>)",
+          fg: "rgba(var(--footer-badge-fg), <alpha-value>)",
+        },
+        button: {
+          fg: "rgba(var(--footer-button-fg), <alpha-value>)",
+          fg_hover: "rgba(var(--footer-button-fg_hover), <alpha-value>)",
+        },
+      },
+      header: {
+        abstract: {
+          "100": {
+            bg: "rgba(var(--header-abstract-100-bg), <alpha-value>)",
+          },
+          "200": {
+            bg: "rgba(var(--header-abstract-200-bg), <alpha-value>)",
+          },
+          "300": {
+            bg: "rgba(var(--header-abstract-300-bg), <alpha-value>)",
+          },
+          "50": {
+            bg: "rgba(var(--header-abstract-50-bg), <alpha-value>)",
+          },
+        },
+      },
     },
     extend: {
       keyframes: {

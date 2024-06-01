@@ -327,6 +327,61 @@
     --text-tertiary_on-brand: var(--gray-dark-mode--400);
     --text-warning-primary: var(--warning--400);
     --text-white: var(--base---white);
+
+    /* Components */
+    --nav-item-button-icon-fg: var(--gray-dark-mode--400);
+    --nav-item-button-icon-fg_active: var(--gray-dark-mode--200);
+    --nav-item-icon-fg: var(--gray-dark-mode--400);
+    --nav-item-icon-fg_active: var(--gray-dark-mode--200);
+
+    --button-primary-bg: var(--brand--600);
+    --button-primary-bg_hover: var(--brand--700);
+    --button-primary-border: var(--brand--600);
+    --button-primary-border_hover: var(--brand--700);
+    --button-primary-fg: var(--base---white);
+    --button-primary-fg_hover: var(--base---white);
+    --button-primary-error-bg: var(--error--600);
+    --button-primary-error-bg_hover: var(--error--700);
+    --button-primary-error-border: var(--error--600);
+    --button-primary-error-border_hover: var(--error--700);
+    --button-primary-error-fg: var(--base---white);
+    --button-primary-error-fg_hover: var(--base---white);
+    --button-secondary-bg: var(--gray-dark-mode--900);
+    --button-secondary-bg_hover: var(--gray-dark-mode--800);
+    --button-secondary-border: var(--gray-dark-mode--700);
+    --button-secondary-border_hover: var(--gray-dark-mode--700);
+    --button-secondary-fg: var(--gray-dark-mode--300);
+    --button-secondary-fg_hover: var(--gray-dark-mode--100);
+    --button-secondary-color-bg: var(--gray-dark-mode--900);
+    --button-secondary-color-bg_hover: var(--gray-dark-mode--800);
+    --button-secondary-color-border: var(--gray-dark-mode--700);
+    --button-secondary-color-border_hover: var(--gray-dark-mode--700);
+    --button-secondary-color-fg: var(--gray-dark-mode--300);
+    --button-secondary-color-fg_hover: var(--gray-dark-mode--100);
+    --button-secondary-error-bg: var(--error--950);
+    --button-secondary-error-bg_hover: var(--error--900);
+    --button-secondary-error-border: var(--error--800);
+    --button-secondary-error-border_hover: var(--error--700);
+    --button-secondary-error-fg: var(--error--200);
+    --button-secondary-error-fg_hover: var(--error--100);
+    --button-tertiary-bg_hover: var(--gray-dark-mode--800);
+    --button-tertiary-fg: var(--gray-dark-mode--400);
+    --button-tertiary-fg_hover: var(--gray-dark-mode--200);
+    --button-tertiary-color-bg_hover: var(--gray-dark-mode--800);
+    --button-tertiary-color-fg: var(--gray-dark-mode--300);
+    --button-tertiary-color-fg_hover: var(--gray-dark-mode--100);
+    --button-tertiary-error-bg_hover: var(--error--900);
+    --button-tertiary-error-fg: var(--error--300);
+    --button-tertiary-error-fg_hover: var(--error--200);
+    --footer-badge-bg: rgba(255, 255, 255, 0.1);
+    --footer-badge-border: rgba(255, 255, 255, 0.3);
+    --footer-badge-fg: var(--base---white);
+    --footer-button-fg: var(--gray-dark-mode--300);
+    --footer-button-fg_hover: var(--gray-dark-mode--100);
+    --header-abstract-100-bg: var(--gray-dark-mode--800);
+    --header-abstract-200-bg: var(--gray-dark-mode--700);
+    --header-abstract-300-bg: var(--gray-dark-mode--600);
+    --header-abstract-50-bg: var(--gray-dark-mode--900);
   }
 }
 
