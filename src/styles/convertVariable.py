@@ -19,6 +19,12 @@ alias = {
     "1.Colormodes-Componentcolors-Components-Buttons-Secondarycolor-": "",
     "1.Colormodes-Componentcolors-Components-Buttons-Secondary-": "",
     "1.Colormodes-Componentcolors-Components-Buttons-Primaryerror-": "",
+    "1.Colormodes-Componentcolors-Utility-Warning-": "",
+    "1.Colormodes-Componentcolors-Utility-Success-": "",
+    "1.Colormodes-Componentcolors-Utility-Error-": "",
+    "1.Colormodes-Componentcolors-Utility-Gray-": '',
+    "1.Colormodes-Componentcolors-Utility-Brand-": '',
+
 
     "_Primitives-Colors-Gray(darkmode)": "gray-dark-mode-",
     "_Primitives-Colors-Gray(lightmode)": "gray-light-mode-",
@@ -47,6 +53,9 @@ with open('dark-style.txt', 'r') as file:
         for key in alias:
             data[i] = data[i].replace(key, alias[key])
 
+        if "1." in data[i]:
+            continue
+
         # Remove extra space
         data[i] = re.sub(' +', ' ', data[i])
 
@@ -55,7 +64,6 @@ with open('dark-style.txt', 'r') as file:
         # Create tailwind config
         # Extract first part of the variable
         variableFirstPart = data[i].split(':')[0]
-        print(variableFirstPart.split('--'))
         variable = variableFirstPart.split('--')[1]
         variableDepth = variable.split('-')
 

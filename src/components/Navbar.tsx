@@ -62,7 +62,7 @@ export default function Navbar({ data }: Props) {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-text-primary text-md font-semibold font-baijamjuree hover:bg-bg-primary_hover">
-            Getting started
+            Resources
           </NavigationMenuTrigger>
           <NavigationMenuContent className="rounded-3xl">
             <ListContent className="md:grid-cols-1">
@@ -79,7 +79,9 @@ export default function Navbar({ data }: Props) {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-text-primary text-md font-semibold font-baijamjuree hover:bg-bg-primary_hover">
+            Components
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ListContent>
               {components.map((component) => (
@@ -94,15 +96,18 @@ export default function Navbar({ data }: Props) {
             </ListContent>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            Documentation
-          </NavigationMenuLink>
-        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
 }
+
+const SingleMenuItem = ({}) => {
+  return (
+    <NavigationMenuItem className="px-4 py-2 text-text-primary text-md font-semibold font-baijamjuree rounded-md cursor-pointer hover:bg-bg-primary_hover">
+      <NavigationMenuLink href>Documentation</NavigationMenuLink>
+    </NavigationMenuItem>
+  );
+};
 
 const ListContent = React.forwardRef<
   React.ElementRef<"ul">,

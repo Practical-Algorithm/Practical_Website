@@ -1,10 +1,17 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+// Component Imports
+import { Image, Picture } from "astro:assets";
 import "@/styles/globals.css";
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Button } from "@/components/ui/button";
-import { Image } from "astro:assets";
-import landingDuck from "../../public/images/landing_duck.png";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+
+// Constants
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import landingDuck from "../images/landing_duck.png";
+import aboutImage from "../images/blog-placeholder-about.jpg";
+import PillBadge from "@/components/PillBadge.astro";
+import RecentBlog from "@/components/index/RecentBlog.astro";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -31,8 +38,9 @@ import landingDuck from "../../public/images/landing_duck.png";
         >
         <Button
           className="font-baijamjuree font-semibold bg-button-secondary-bg h-fit w-fit border border-button-secondary-border text-button-secondary-fg  px-[22px] py-4 text-lg rounded-[8px]"
-          >Facebook</Button
         >
+          <Icon name="bi--facebook" />
+        </Button>
         <Button
           className="font-baijamjuree bg-[rgba(var(--brand--600))] h-fit w-fit hover:bg-[rgba(var(--brand--700))] rounded-[8px] text-text-white px-[22px] py-4 font-semibold text-lg"
           >เริ่มเรียนกันเลย!</Button
@@ -50,6 +58,98 @@ import landingDuck from "../../public/images/landing_duck.png";
         alt="Practical Algorithm Landing Image"
       />
     </div>
-    <div></div>
-  </div></BaseLayout
->
+  </div>
+
+  <!-- Table of Content -->
+  <section class="px-8 my-24 space-y-16">
+    <div aria-description="Table of Content" class="flex flex-col">
+      <header class="space-y-3">
+        <h4 class="text-md font-semibold text-text-brand-secondary">
+          Table of Content
+        </h4>
+        <h3 class="text-display-md font-bold text-text-primary font-sans">
+          สารบัญรวมเนื้อหา สอวน. คอมพิวเตอร์
+        </h3>
+      </header>
+      <p class="text-xl text-text-tertiary">
+        Spend smarter, lower your bills, get cashback on everything you buy, and
+        unlock credit to grow your business.
+      </p>
+    </div>
+    <div class="flex gap-x-16 px-8 items-center justify-start">
+      <div aria-description="feature-section" class="space-y-12 grow basis-0">
+        <div class="feature flex gap-3">
+          <div class="feature-icon">A</div>
+          <div class="feature-content space-y-5">
+            <div class="pt-2.5 space-y-2">
+              <h5 class="text-xl font-semibold text-text-primary">
+                เนื้อหาคณิตศาสตร์ ก่อนค่าย1
+              </h5>
+              <p class="text-md text-text-tertiary">
+                Give your team the autonomy they need with access to as many
+                cards as they need. Authorise purchases with a click. Simple.
+              </p>
+            </div>
+            <Button variant="link_color" size="link_lg">
+              Learn more
+              <Icon name="arrow-right" />
+            </Button>
+          </div>
+        </div>
+        <div class="feature flex gap-3">
+          <div class="feature-icon w-12 h-12"></div>
+          <div class="feature-content space-y-5">
+            <div class="pt-2.5 space-y-2">
+              <h5 class="text-xl font-semibold text-text-primary">
+                เนื้อหาคณิตศาสตร์ ก่อนค่าย1
+              </h5>
+              <p class="text-md text-text-tertiary">
+                Give your team the autonomy they need with access to as many
+                cards as they need. Authorise purchases with a click. Simple.
+              </p>
+            </div>
+            <Button variant="link_color" size="link_lg">
+              Learn more
+              <Icon name="arrow-right" />
+            </Button>
+          </div>
+        </div>
+        <div class="feature flex gap-3">
+          <div class="feature-icon w-12 h-12"></div>
+          <div class="feature-content space-y-5">
+            <div class="pt-2.5 space-y-2">
+              <h5 class="text-xl font-semibold text-text-primary">
+                เนื้อหาคณิตศาสตร์ ก่อนค่าย1
+              </h5>
+              <p class="text-md text-text-tertiary">
+                Give your team the autonomy they need with access to as many
+                cards as they need. Authorise purchases with a click. Simple.
+              </p>
+            </div>
+            <Button variant="link_color" size="link_lg">
+              Learn more
+              <Icon name="arrow-right" />
+            </Button>
+          </div>
+        </div>
+      </div>
+      <Image
+        src={aboutImage}
+        height={560}
+        width={592}
+        alt="About me Image"
+        class="grow basis-0"
+      />
+    </div>
+  </section>
+
+  <RecentBlog />
+</BaseLayout>
+
+<style>
+  .feature-icon {
+    @apply w-12 h-12 basis-12 shrink-0 flex items-center justify-center border border-solid border-border-icon-modern text-fg-secondary;
+    @apply rounded-[10px];
+    box-shadow: var(--shadows--shadow-xs);
+  }
+</style>

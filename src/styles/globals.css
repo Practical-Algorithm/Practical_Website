@@ -4,6 +4,43 @@
 
 @layer base {
   :root {
+    /* Effect styles */
+    --focus-rings--ring-brand: 0px 0px 0px rgba(206, 234, 176, 1);
+    --focus-rings--ring-brand-shadow-xs: 0px 0px 0px rgba(158, 119, 237, 0.24),
+      0px 1px 2px rgba(16, 24, 40, 0.05);
+    --focus-rings--ring-brand-shadow-sm: 0px 0px 0px rgba(158, 119, 237, 0.24),
+      0px 1px 2px rgba(16, 24, 40, 0.06), 0px 1px 3px rgba(16, 24, 40, 0.1);
+    --focus-rings--ring-gray: 0px 0px 0px rgba(152, 162, 179, 0.14);
+    --focus-rings--ring-gray-shadow-xs: 0px 0px 0px rgba(152, 162, 179, 0.14),
+      0px 1px 2px rgba(16, 24, 40, 0.05);
+    --focus-rings--ring-gray-shadow-sm: 0px 0px 0px rgba(152, 162, 179, 0.14),
+      0px 1px 2px rgba(16, 24, 40, 0.06), 0px 1px 3px rgba(16, 24, 40, 0.1);
+    --focus-rings--ring-gray-secondary: 0px 0px 0px rgba(152, 162, 179, 0.2);
+    --focus-rings--ring-error: 0px 0px 0px rgba(240, 68, 56, 0.24);
+    --focus-rings--ring-error-shadow-xs: 0px 0px 0px rgba(240, 68, 56, 0.24),
+      0px 1px 2px rgba(16, 24, 40, 0.05);
+    --shadows--shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    --shadows--shadow-sm: 0px 1px 2px rgba(16, 24, 40, 0.06),
+      0px 1px 3px rgba(16, 24, 40, 0.1);
+    --shadows--shadow-md: 0px 2px 4px rgba(16, 24, 40, 0.06),
+      0px 4px 8px rgba(16, 24, 40, 0.1);
+    --shadows--shadow-lg: 0px 4px 6px rgba(16, 24, 40, 0.03),
+      0px 12px 16px rgba(16, 24, 40, 0.08);
+    --shadows--shadow-xl: 0px 8px 8px rgba(16, 24, 40, 0.03),
+      0px 20px 24px rgba(16, 24, 40, 0.08);
+    --shadows--shadow-2xl: 0px 24px 48px rgba(16, 24, 40, 0.18);
+    --shadows--shadow-3xl: 0px 32px 64px rgba(16, 24, 40, 0.14);
+    --shadows---portfolio-mockup-shadows--shadow-main-centre-md: 0px 75px 150px
+      rgba(52, 64, 84, 0.14);
+    --shadows---portfolio-mockup-shadows--shadow-main-centre-lg: 0px 100px 200px
+      rgba(52, 64, 84, 0.18);
+    --shadows---portfolio-mockup-shadows--shadow-overlay-right-lg: -40px 40px
+      72px rgba(52, 64, 84, 0.12);
+    --shadows---portfolio-mockup-shadows--shadow-overlay-left-lg: 100px 100px
+      150px rgba(52, 64, 84, 0.12);
+    --shadows---portfolio-mockup-shadows--shadow-grid-md: 32px 32px 64px
+      rgba(52, 64, 84, 0.08);
+
     /* Color styles */
     --base---white: 255, 255, 255;
     --base---black: 0, 0, 0;
@@ -44,7 +81,6 @@
     --brand--900: 43, 66, 18;
     --brand--950: 26, 40, 11;
     --brand--25: 250, 253, 247;
-    --brand--700: 63, 98, 26;
     --error--25: 255, 251, 250;
     --error--50: 254, 243, 242;
     --error--100: 254, 228, 226;
@@ -240,6 +276,63 @@
     --header-abstract-200-bg: var(--brand--200);
     --header-abstract-300-bg: var(--brand--300);
     --header-abstract-50-bg: var(--brand--50);
+
+    --utility-brand-100: var(--brand--100);
+    --utility-brand-100_alt: var(--brand--100);
+    --utility-brand-50: var(--brand--50);
+    --utility-brand-200: var(--brand--200);
+    --utility-brand-200_alt: var(--brand--200);
+    --utility-brand-300: var(--brand--300);
+    --utility-brand-300_alt: var(--brand--300);
+    --utility-brand-400: var(--brand--400);
+    --utility-brand-400_alt: var(--brand--400);
+    --utility-brand-500: var(--brand--500);
+    --utility-brand-500_alt: var(--brand--500);
+    --utility-brand-50_alt: var(--brand--50);
+    --utility-brand-600: var(--brand--600);
+    --utility-brand-600_alt: var(--brand--600);
+    --utility-brand-700: var(--brand--700);
+    --utility-brand-700_alt: var(--brand--700);
+    --utility-brand-800: var(--brand--800);
+    --utility-brand-800_alt: var(--brand--800);
+    --utility-brand-900: var(--brand--900);
+    --utility-brand-900_alt: var(--brand--900);
+    --utility-error-50: var(--error--50);
+    --utility-error-100: var(--error--100);
+    --utility-error-200: var(--error--200);
+    --utility-error-300: var(--error--300);
+    --utility-error-400: var(--error--400);
+    --utility-error-500: var(--error--500);
+    --utility-error-600: var(--error--600);
+    --utility-error-700: var(--error--700);
+    --utility-gray-50: var(--gray-light-mode--50);
+    --utility-gray-100: var(--gray-light-mode--100);
+    --utility-gray-200: var(--gray-light-mode--200);
+    --utility-gray-300: var(--gray-light-mode--300);
+    --utility-gray-400: var(--gray-light-mode--400);
+    --utility-gray-500: var(--gray-light-mode--500);
+    --utility-gray-600: var(--gray-light-mode--600);
+    --utility-gray-700: var(--gray-light-mode--700);
+    --utility-gray-800: var(--gray-light-mode--800);
+    --utility-gray-900: var(--gray-light-mode--900);
+    --utility-success-50: var(--success--50);
+    --utility-success-100: var(--success--100);
+    --utility-success-200: var(--success--200);
+    --utility-success-300: var(--success--300);
+    --utility-success-400: var(--success--400);
+    --utility-success-500: var(--success--500);
+    --utility-success-600: var(--success--600);
+    --utility-success-700: var(--success--700);
+    --utility-warning-50: var(--warning--50);
+    --utility-warning-100: var(--warning--100);
+    --utility-warning-200: var(--warning--200);
+    --utility-warning-300: var(--warning--300);
+    --utility-warning-400: var(--warning--400);
+    --utility-warning-500: var(--warning--500);
+    --utility-warning-600: var(--warning--600);
+    --utility-warning-700: var(--warning--700);
+
+    --icon-modern-border: var(--gray-light-mode--200);
   }
 
   .dark {
@@ -382,11 +475,68 @@
     --header-abstract-200-bg: var(--gray-dark-mode--700);
     --header-abstract-300-bg: var(--gray-dark-mode--600);
     --header-abstract-50-bg: var(--gray-dark-mode--900);
+
+    --utility-brand-100: var(--brand--900);
+    --utility-brand-100_alt: var(--utility-gray-100);
+    --utility-brand-50: var(--brand--950);
+    --utility-brand-200: var(--brand--800);
+    --utility-brand-200_alt: var(--utility-gray-200);
+    --utility-brand-300: var(--brand--700);
+    --utility-brand-300_alt: var(--utility-gray-300);
+    --utility-brand-400: var(--brand--600);
+    --utility-brand-400_alt: var(--utility-gray-400);
+    --utility-brand-500: var(--brand--500);
+    --utility-brand-500_alt: var(--utility-gray-500);
+    --utility-brand-50_alt: var(--utility-gray-50);
+    --utility-brand-600: var(--brand--400);
+    --utility-brand-600_alt: var(--utility-gray-600);
+    --utility-brand-700: var(--brand--300);
+    --utility-brand-700_alt: var(--utility-gray-700);
+    --utility-brand-800: var(--brand--200);
+    --utility-brand-800_alt: var(--utility-gray-800);
+    --utility-brand-900: var(--brand--100);
+    --utility-brand-900_alt: var(--utility-gray-900);
+    --utility-error-50: var(--error--950);
+    --utility-error-100: var(--error--900);
+    --utility-error-200: var(--error--800);
+    --utility-error-300: var(--error--700);
+    --utility-error-400: var(--error--600);
+    --utility-error-500: var(--error--500);
+    --utility-error-600: var(--error--400);
+    --utility-error-700: var(--error--300);
+    --utility-gray-50: var(--gray-dark-mode--900);
+    --utility-gray-100: var(--gray-dark-mode--800);
+    --utility-gray-200: var(--gray-dark-mode--700);
+    --utility-gray-300: var(--gray-dark-mode--700);
+    --utility-gray-400: var(--gray-dark-mode--600);
+    --utility-gray-500: var(--gray-dark-mode--500);
+    --utility-gray-600: var(--gray-dark-mode--400);
+    --utility-gray-700: var(--gray-dark-mode--300);
+    --utility-gray-800: var(--gray-dark-mode--200);
+    --utility-gray-900: var(--gray-dark-mode--100);
+    --utility-success-50: var(--success--950);
+    --utility-success-100: var(--success--900);
+    --utility-success-200: var(--success--800);
+    --utility-success-300: var(--success--700);
+    --utility-success-400: var(--success--600);
+    --utility-success-500: var(--success--500);
+    --utility-success-600: var(--success--400);
+    --utility-success-700: var(--success--300);
+    --utility-warning-50: var(--warning--950);
+    --utility-warning-100: var(--warning--900);
+    --utility-warning-200: var(--warning--800);
+    --utility-warning-300: var(--warning--700);
+    --utility-warning-400: var(--warning--600);
+    --utility-warning-500: var(--warning--500);
+    --utility-warning-600: var(--warning--400);
+    --utility-warning-700: var(--warning--300);
+
+    --icon-modern-border: var(--gray-dark-mode--700);
   }
 }
 
 @layer base {
   * {
-    @apply font-sarabun text-text-primary;
+    @apply font-sarabun;
   }
 }

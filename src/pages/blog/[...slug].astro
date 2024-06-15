@@ -1,0 +1,35 @@
+---
+// import { type CollectionEntry, getCollection } from "astro:content";
+import { getEntry } from "astro:content";
+import BlogPost from "../../layouts/BlogPost.astro";
+
+// export async function getStaticPaths() {
+//   const posts = await getCollection("blog");
+//   return posts.map((post) => ({
+//     params: { slug: post.slug },
+//     props: post,
+//   }));
+
+// type Props = CollectionEntry<"blog">;
+
+// const post = Astro.props;
+// const { Content } = await post.render();
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+  throw new Error("slug is undefined");
+}
+
+const post = await getEntry("blog", slug);
+
+if (post === undefined) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await post.render();
+---
+
+<BlogPost {...post.data}>
+  <Content />
+</BlogPost>

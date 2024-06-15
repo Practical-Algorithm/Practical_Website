@@ -1,0 +1,32 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  size: "sm" | "md" | "lg";
+  color: "brand";
+}
+
+const { size, color } = Astro.props;
+
+const variants = {
+  size: {
+    sm: "",
+    md: "py-1 px-3 text-sm font-medium",
+    lg: "",
+  },
+  color: {
+    brand:
+      "border-utility-brand-200 text-utility-brand-700 bg-utility-brand-50",
+  },
+};
+---
+
+<span
+  class={cn(
+    "py-0.5 px-2.5 font-baijamjuree text-sm font-semibold border border-solid rounded-full",
+    variants.size[size],
+    variants.color[color]
+  )}
+>
+  <slot />
+</span>
