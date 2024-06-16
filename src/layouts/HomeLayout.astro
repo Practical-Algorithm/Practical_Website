@@ -1,8 +1,5 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/index/Header.astro";
-import Footer from "../components/index/Footer.astro";
-import FormattedDate from "../components/utils/FormattedDate.astro";
 
 type Props = {
   title: string;
@@ -43,10 +40,17 @@ const { title, description } = Astro.props as Props;
   </head>
 
   <body class="bg-bg-primary text-text-primary">
-    <Header />
-    <main class="max-w-7xl mx-auto">
-      <slot />
-    </main>
-    <Footer />
+    <!-- Navbar -->
+    <nav></nav>
+    <!-- Main Body -->
+    <div>
+      <!-- Header -->
+      <header></header>
+      <section>
+        <!-- Main -->
+        <main></main>
+        <!-- Aside -->
+      </section>
+    </div>
   </body>
 </html>
