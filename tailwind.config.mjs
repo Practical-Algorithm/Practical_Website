@@ -7,12 +7,12 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        md: "768px",
-        lg: "1200px",
-        xl: "1280px",
-        "2xl": "1400px",
-      },
+    },
+    screens: {
+      md: "768px",
+      lg: "1200px",
+      xl: "1280px",
+      "2xl": "1400px",
     },
     fontSize: {
       "display-2xl": ["4.5rem", { lineHeight: "5.625rem", tracking: "-2%" }],

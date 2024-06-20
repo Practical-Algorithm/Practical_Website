@@ -539,4 +539,27 @@
   * {
     @apply font-sarabun;
   }
+  html {
+    height: 100%;
+  }
+}
+
+@layer utilities {
+  .scrollable-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    max-height: 100%;
+    overflow: auto;
+    outline: none;
+  }
+
+  .lesson-scroll-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }

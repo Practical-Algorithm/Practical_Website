@@ -1,0 +1,152 @@
+---
+import QuizLayout from "@/layouts/QuizLayout.astro";
+
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+---
+
+<QuizLayout>
+  <header class="quiz__header">
+    <button type="button" class="quiz__close-button btn-link icon-only">
+      <Icon name="ion/close-outline" size={24} />
+    </button>
+    <div class="player__progress player__header-section">
+      <div class="player__progress__bar"></div>
+    </div>
+    <div class="player__header-section">
+      <button type="button" class="btn-link">
+        <Icon name="ion/ellipsis-vertical" size={24} />
+      </button>
+    </div>
+  </header>
+  <div class="lesson-scroll-area">
+    <main class="quiz__content">
+      <article class="main-content scrollable-area">
+        <div class="image-card">
+          <Image
+            src="/blog-placeholder-1.jpg"
+            alt="Quiz-card"
+            width={960}
+            height={480}
+          />
+        </div>
+        <section class="details">
+          <h1 class="detail-title">Title</h1>
+          <div class="formatted-content">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              pariatur minima quas perspiciatis explicabo distinctio vel
+              temporibus autem doloribus iusto, quo qui magni, molestias tempora
+              culpa sapiente minus nobis nesciunt. Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit. Molestias incidunt praesentium
+              possimus dolorem distinctio adipisci ullam repellendus, inventore
+              error veritatis. Numquam beatae distinctio deserunt doloribus
+              aliquam adipisci iste eaque,
+            </p>
+            <p>
+              suscipit dolorum ratione, porro fugiat eveniet, laboriosam
+              repellat hic ullam illum facilis dolore totam fuga cum accusantium
+              mollitia voluptate nobis. Facere sit voluptas debitis nobis
+              obcaecati commodi qui inventore similique eaque! Ipsam,
+              dignissimos placeat dolore qui nobis minima doloremque ullam
+              incidunt! Eum nihil necessitatibus nam adipisci eligendi deserunt
+              provident voluptas laborum tempora, possimus dolore nostrum amet
+              commodi iste facere libero doloribus exercitationem et voluptates
+              fugit atque soluta nemo quo. Dolor, autem?
+            </p>
+          </div>
+          <div class="tip">
+            <p>This is a tip!</p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+</QuizLayout>
+
+<style>
+  .quiz__header {
+    @apply p-4 md:p-6 lg:px-28 self-center;
+    @apply shrink-0 flex justify-between items-center;
+    @apply w-full h-20;
+    @apply z-10;
+  }
+
+  .quiz__content {
+    @apply pt-6;
+    @apply p-4 md:p-6 lg:px-28 self-center;
+    @apply text-xl;
+  }
+
+  .main-content {
+    @apply lg:grid grid-cols-8 gap-6;
+    grid-template-rows: auto 1fr;
+  }
+
+  .btn-link {
+    --button-size: 24px;
+
+    @apply text-md font-semibold;
+    @apply flex relative items-center;
+    @apply text-button-primary-fg;
+    transition: color 0.2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
+
+    width: var(--button-size);
+    height: var(--button-size);
+  }
+
+  .btn-link:hover {
+    @apply text-button-primary-fg_hover;
+  }
+
+  .player__progress {
+    --progress-color: white;
+
+    @apply grow bg-utility-gray-200 rounded-full;
+    @apply h-3;
+  }
+
+  .player__header-section {
+    @apply ml-4 md:ml-6;
+  }
+
+  .player__progress__bar {
+    --progress-color: white;
+
+    @apply w-5 bg-[var(--progress-color)] rounded-full;
+  }
+
+  .image-card {
+    grid-column: 1/5;
+    grid-row: 1/2;
+  }
+
+  .details {
+    @apply h-full;
+    @apply row-span-2;
+    grid-column: 5/-1;
+  }
+
+  .tip {
+    @apply flex;
+    @apply relative;
+    @apply pl-4 mt-6;
+  }
+
+  .tip::before {
+    content: "";
+    @apply absolute top-0 left-0;
+    @apply w-1 h-full;
+    @apply bg-text-primary;
+    @apply rounded-lg;
+  }
+
+  .detail-title {
+    @apply text-display-sm font-bold;
+    @apply mb-6;
+  }
+
+  .formatted-content > *:not(:first-child) {
+    @apply mt-4;
+  }
+</style>
