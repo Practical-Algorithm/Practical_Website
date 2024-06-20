@@ -28,6 +28,7 @@ import { Image } from "astro:assets";
             alt="Quiz-card"
             width={960}
             height={480}
+            class="rounded-lg"
           />
         </div>
         <section class="details">
@@ -43,23 +44,40 @@ import { Image } from "astro:assets";
               error veritatis. Numquam beatae distinctio deserunt doloribus
               aliquam adipisci iste eaque,
             </p>
-            <p>
-              suscipit dolorum ratione, porro fugiat eveniet, laboriosam
-              repellat hic ullam illum facilis dolore totam fuga cum accusantium
-              mollitia voluptate nobis. Facere sit voluptas debitis nobis
-              obcaecati commodi qui inventore similique eaque! Ipsam,
-              dignissimos placeat dolore qui nobis minima doloremque ullam
-              incidunt! Eum nihil necessitatibus nam adipisci eligendi deserunt
-              provident voluptas laborum tempora, possimus dolore nostrum amet
-              commodi iste facere libero doloribus exercitationem et voluptates
-              fugit atque soluta nemo quo. Dolor, autem?
-            </p>
+            <ul>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Obcaecati saepe consequatur error ex natus pariatur, quaerat
+                numquam accusantium voluptatibus tenetur! Tenetur facilis ipsa,
+                doloribus magni fugiat autem earum laboriosam amet.
+              </li>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Obcaecati saepe consequatur error ex natus pariatur, quaerat
+                numquam accusantium voluptatibus tenetur! Tenetur facilis ipsa,
+                doloribus magni fugiat autem earum laboriosam amet.
+              </li>
+            </ul>
           </div>
           <div class="tip">
             <p>This is a tip!</p>
           </div>
         </section>
       </article>
+      <footer class="player__footer">
+        <div class="footer__title">
+          <div class="footer__headline">
+            <Icon name="ion/close-outline" size={24} />
+            <p>เก่งมาก</p>
+          </div>
+          <div class="report-button btn-link">
+            <Icon name="ion/close-outline" size={24} />
+          </div>
+        </div>
+        <div>
+          <button type="button" class="footer-button">Continue</button>
+        </div>
+      </footer>
     </main>
   </div>
 </QuizLayout>
@@ -88,7 +106,7 @@ import { Image } from "astro:assets";
 
     @apply text-md font-semibold;
     @apply flex relative items-center;
-    @apply text-button-primary-fg;
+    @apply text-fg-secondary;
     transition: color 0.2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
 
     width: var(--button-size);
@@ -96,7 +114,7 @@ import { Image } from "astro:assets";
   }
 
   .btn-link:hover {
-    @apply text-button-primary-fg_hover;
+    @apply text-fg-secondary_hover;
   }
 
   .player__progress {
@@ -125,6 +143,7 @@ import { Image } from "astro:assets";
     @apply h-full;
     @apply row-span-2;
     grid-column: 5/-1;
+    @apply pb-[120px] md:pb-[100px] lg:pb-[120px];
   }
 
   .tip {
@@ -148,5 +167,46 @@ import { Image } from "astro:assets";
 
   .formatted-content > *:not(:first-child) {
     @apply mt-4;
+  }
+
+  .formatted-content li {
+    @apply list-disc ml-6;
+  }
+
+  .formatted-content li:not(:first-child) {
+    @apply mt-2;
+  }
+
+  .player__footer {
+    @apply fixed bottom-0 left-0 right-0;
+    @apply lg:h-[120px];
+    @apply flex flex-col lg:flex-row lg:items-center lg:justify-between;
+    @apply p-4 md:px-6;
+    @apply bg-bg-primary;
+    @apply border-t-2 border-utility-gray-200;
+  }
+
+  .footer__title {
+    @apply flex items-center justify-between;
+    @apply lg:grow;
+  }
+
+  .footer__headline {
+    @apply flex items-center;
+  }
+
+  .footer-button {
+    @apply w-full lg:w-auto;
+    @apply text-center;
+    @apply bg-button-primary-bg;
+    @apply md:ml-4;
+    @apply min-w-44 h-11 md:h-16;
+    @apply font-bold text-xl;
+    @apply rounded-xl md:rounded-2xl;
+    @apply grid place-items-center;
+  }
+
+  .report-button {
+    @apply text-fg-secondary;
   }
 </style>
