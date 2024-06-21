@@ -1,0 +1,53 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="player__footer">
+  <div class="footer__title">
+    <div class="footer__headline">
+      <Icon name="ion/close-outline" size={24} />
+      <p>เก่งมาก</p>
+    </div>
+    <div class="report-button btn-link">
+      <Icon name="ion/close-outline" size={24} />
+    </div>
+  </div>
+  <div>
+    <button type="button" class="footer-button">Continue</button>
+  </div>
+</footer>
+
+<style>
+  .player__footer {
+    @apply fixed bottom-0 left-0 right-0;
+    @apply lg:h-[120px];
+    @apply flex flex-col lg:flex-row lg:items-center lg:justify-between;
+    @apply p-4 md:px-6;
+    @apply bg-bg-primary;
+    @apply border-t-2 border-utility-gray-200;
+  }
+
+  .footer__title {
+    @apply flex items-center justify-between;
+    @apply lg:grow;
+  }
+
+  .footer__headline {
+    @apply flex items-center;
+  }
+
+  .footer-button {
+    @apply w-full lg:w-auto;
+    @apply text-center;
+    @apply bg-button-primary-bg;
+    @apply md:ml-4;
+    @apply min-w-44 h-11 md:h-16;
+    @apply font-bold text-xl;
+    @apply rounded-xl md:rounded-2xl;
+    @apply grid place-items-center;
+  }
+
+  .report-button {
+    @apply text-fg-secondary;
+  }
+</style>

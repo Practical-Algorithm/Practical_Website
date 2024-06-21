@@ -5,8 +5,22 @@ import QuizLayout from "@/layouts/QuizLayout.astro";
 import ProgressBar from "@/components/quiz/ProgressBar.astro";
 import ChoicesForm from "@/components/quiz/ChoicesForm.astro";
 
+import { getEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+
+const { slug } = Astro.params;
+if (!slug) {
+  throw new Error("Missing slug in URL");
+}
+
+const quizEntry = await getEntry("quiz", slug);
+
+if (!quizEntry) {
+  throw new Error(`Quiz not found: ${slug}`);
+}
 ---
 
 <QuizLayout>
@@ -33,8 +47,8 @@ import { Image } from "astro:assets";
             class="rounded-lg"
           />
         </div>
-        <!-- <Explanation /> -->
-        <ChoicesForm />
+        <Explanation {quizEntry} />
+        <!-- <ChoicesForm /> -->
       </article>
       <Footer />
     </main>

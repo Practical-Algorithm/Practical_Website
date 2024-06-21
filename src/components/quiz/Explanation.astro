@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from "astro:content";
+import "./explanation.css";
+
+export interface Props {
+  quizEntry: CollectionEntry<"quiz">;
+}
+
+const { quizEntry } = Astro.props as Props;
+const { title } = quizEntry.data;
+const { Content } = await quizEntry.render();
+---
+
+<section class="details">
+  <h1 class="detail-title">{title}</h1>
+  <div class="formatted-content">
+    <Content />
+  </div>
+</section>

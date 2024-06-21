@@ -1,0 +1,37 @@
+.details {
+  @apply h-full;
+  @apply row-span-2;
+  grid-column: 5/-1;
+  @apply pb-[120px] md:pb-[100px] lg:pb-[120px];
+}
+
+.formatted-content blockquote {
+  @apply flex;
+  @apply relative;
+  @apply pl-4 mt-6;
+}
+
+blockquote::before {
+  content: "";
+  @apply absolute top-0 left-0;
+  @apply w-1 h-full;
+  @apply bg-text-primary;
+  @apply rounded-lg;
+}
+
+.detail-title {
+  @apply text-display-sm font-bold;
+  @apply mb-6;
+}
+
+.formatted-content > *:not(:first-child) {
+  @apply mt-4;
+}
+
+.formatted-content li {
+  @apply list-disc ml-6;
+}
+
+.formatted-content li:not(:first-child) {
+  @apply mt-2;
+}
