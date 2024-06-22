@@ -542,6 +542,12 @@
   html {
     height: 100%;
   }
+
+  body {
+    word-wrap: break-word;
+
+    word-break: break-word;
+  }
 }
 
 @layer utilities {
