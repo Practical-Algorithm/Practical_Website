@@ -544,9 +544,15 @@
   }
 
   body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-user-drag: none;
+    touch-action: manipulation;
     word-wrap: break-word;
-
     word-break: break-word;
+    overscroll-behavior-y: none;
+    text-size-adjust: none;
   }
 }
 

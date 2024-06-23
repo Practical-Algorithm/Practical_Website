@@ -6,10 +6,10 @@ import ProgressBar from "@/components/quiz/ProgressBar.astro";
 import ChoicesForm from "@/components/quiz/ChoicesForm.astro";
 
 import { getEntry } from "astro:content";
-import type { CollectionEntry } from "astro:content";
 
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import QuestionTitle from "@/components/quiz/QuestionTitle.astro";
 
 const { slug } = Astro.params;
 if (!slug) {
@@ -21,6 +21,8 @@ const quizEntry = await getEntry("quiz", slug);
 if (!quizEntry) {
   throw new Error(`Quiz not found: ${slug}`);
 }
+
+const isAnswered = false;
 ---
 
 <QuizLayout>
@@ -37,6 +39,7 @@ if (!quizEntry) {
   </header>
   <div class="lesson-scroll-area">
     <main class="quiz__content">
+      <QuestionTitle {quizEntry} />
       <article class="main-content scrollable-area">
         <div class="image-card">
           <Image
@@ -47,10 +50,9 @@ if (!quizEntry) {
             class="rounded-lg"
           />
         </div>
-        <Explanation {quizEntry} />
-        <!-- <ChoicesForm /> -->
+        {isAnswered ? <Explanation {quizEntry} /> : <ChoicesForm {quizEntry} />}
       </article>
-      <Footer />
+      <Footer {isAnswered} />
     </main>
   </div>
 </QuizLayout>
@@ -70,8 +72,13 @@ if (!quizEntry) {
   }
 
   .main-content {
+    @apply pt-6;
     @apply lg:grid grid-cols-8 gap-6;
     grid-template-rows: auto 1fr;
+  }
+
+  .main-content:has(.choices) {
+    @apply md:grid;
   }
 
   .btn-link {

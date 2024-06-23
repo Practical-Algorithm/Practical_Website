@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  quizEntry: CollectionEntry<"quiz">;
+}
+
+const { quizEntry }: Props = Astro.props;
+const { title } = quizEntry.data;
+---
+
+<section>
+  <h1>{title}</h1>
+</section>
+
+<style>
+  h1 {
+    @apply flex justify-center items-center;
+    @apply text-center;
+    @apply max-w-3xl mx-auto;
+
+    @apply font-bold;
+    @apply text-xl md:text-display-sm;
+  }
+</style>

@@ -1,17 +1,40 @@
 ---
 import { Icon } from "astro-icon/components";
+
+interface Props {
+  isAnswered: boolean;
+}
+
+const { isAnswered } = Astro.props;
 ---
 
-<footer class="player__footer">
-  <div class="footer__title">
-    <div class="footer__headline">
-      <Icon name="ion/close-outline" size={24} />
-      <p>เก่งมาก</p>
-    </div>
-    <div class="report-button btn-link">
-      <Icon name="ion/close-outline" size={24} />
-    </div>
-  </div>
+<footer
+  class="player__footer"
+  class:list={[
+    {
+      player__answered: isAnswered,
+    },
+  ]}
+>
+  {
+    isAnswered ? (
+      <div class="footer__title">
+        <div class="footer__headline">
+          <div class="icon-wrapper">
+            <Icon name="mdi/report" />
+          </div>
+          <span>เก่งมาก</span>
+        </div>
+        <button type="button" class="report-button btn-link">
+          <Icon name="mdi/flag" size={24} />
+          <span>Report</span>
+        </button>
+      </div>
+    ) : (
+      <div />
+    )
+  }
+
   <div>
     <button type="button" class="footer-button">Continue</button>
   </div>
@@ -21,7 +44,7 @@ import { Icon } from "astro-icon/components";
   .player__footer {
     @apply fixed bottom-0 left-0 right-0;
     @apply lg:h-[120px];
-    @apply flex flex-col lg:flex-row lg:items-center lg:justify-between;
+    @apply flex flex-col md:flex-row md:items-center md:justify-between;
     @apply p-4 md:px-6;
     @apply bg-bg-primary;
     @apply border-t-2 border-utility-gray-200;
@@ -29,25 +52,78 @@ import { Icon } from "astro-icon/components";
 
   .footer__title {
     @apply flex items-center justify-between;
-    @apply lg:grow;
+    @apply md:grow;
+    @apply mb-4 md:mb-0;
   }
 
   .footer__headline {
     @apply flex items-center;
   }
 
-  .footer-button {
-    @apply w-full lg:w-auto;
-    @apply text-center;
-    @apply bg-button-primary-bg;
-    @apply md:ml-4;
-    @apply min-w-44 h-11 md:h-16;
-    @apply font-bold text-xl;
-    @apply rounded-xl md:rounded-2xl;
+  .icon-wrapper {
+    @apply text-display-sm md:text-display-lg lg:text-display-xl;
     @apply grid place-items-center;
   }
 
+  .footer__headline span {
+    @apply ml-4;
+    @apply text-xl md:text-display-xs font-bold text-fg-primary;
+  }
+
+  .footer-button {
+    @apply w-full lg:w-auto;
+    @apply text-center;
+    @apply md:ml-4;
+    @apply min-w-44 h-11 md:h-16;
+    @apply font-bold text-md md:text-xl;
+    @apply rounded-xl md:rounded-2xl;
+    @apply grid place-items-center;
+
+    transition:
+      background-color 0.2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s,
+      color 0.2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
+
+    @apply bg-border-disabled text-fg-disabled;
+    @apply cursor-default;
+  }
+
+  .player__answered .footer-button {
+    @apply bg-button-primary-bg text-button-primary-fg;
+    @apply cursor-pointer;
+  }
+
+  .player__answered .footer-button:hover {
+    @apply bg-button-primary-bg_hover text-button-primary-fg_hover;
+  }
+
   .report-button {
-    @apply text-fg-secondary;
+    @apply text-fg-tertiary;
+    @apply hidden invisible;
+  }
+
+  .player__answered .report-button {
+    @apply flex items-center justify-center gap-2 visible;
+    @apply text-center;
+    @apply md:ml-4;
+    @apply md:min-w-44 md:h-16;
+    @apply font-bold text-md md:text-xl;
+    @apply rounded-xl md:rounded-2xl;
+
+    transition:
+      background-color 0.2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s,
+      color 0.2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
+  }
+
+  .player__answered .report-button:hover {
+    @apply text-fg-tertiary_hover;
+  }
+
+  .player__answered .report-button span {
+    @apply hidden invisible;
+    @apply md:block md:visible;
+  }
+
+  .player__answered .report-button:hover {
+    @apply md:bg-bg-tertiary;
   }
 </style>
