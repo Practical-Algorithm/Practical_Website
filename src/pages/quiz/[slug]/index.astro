@@ -55,7 +55,7 @@ if (Astro.cookies.has(cookieKey)) {
   answerIndex = parseInt(cookieAnswerIndex);
   Astro.cookies.delete(cookieKey);
 }
-const isAnswered = answerIndex !== null;
+const isAnswered = answerIndex !== undefined;
 ---
 
 <QuizLayout>
@@ -64,6 +64,7 @@ const isAnswered = answerIndex !== null;
       <Icon name="ion/close-outline" size={24} />
     </button>
     <ProgressBar />
+    <!-- <PlayerTimer /> -->
     <div class="player__header-section">
       <button type="button" class="btn-link">
         <Icon name="ion/ellipsis-vertical" size={24} />
@@ -78,8 +79,8 @@ const isAnswered = answerIndex !== null;
           <Image
             src={quizImage}
             alt="Quiz-card"
-            width={1008}
-            height={562}
+            width={1253}
+            height={1006}
             class="rounded-lg"
           />
         </div>

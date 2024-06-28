@@ -31,7 +31,40 @@ const { title } = quizEntry.data;
   }
 
   .answered h1 {
-    @apply hidden invisible;
-    @apply lg:block lg:visible;
+    @apply overflow-hidden;
+  }
+
+  @keyframes FadeUp {
+    from {
+      opacity: 1;
+      @apply visible;
+      grid-template-rows: 1fr;
+    }
+    30% {
+      opacity: 0;
+      grid-template-rows: 1fr;
+    }
+
+    50% {
+      grid-template-rows: 1fr;
+    }
+    99% {
+      opacity: 0;
+
+      @apply invisible hidden;
+      grid-template-rows: 0fr;
+    }
+    to {
+      opacity: 0;
+
+      grid-template-rows: 0fr;
+    }
+  }
+
+  section.answered {
+    @apply grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 1000ms ease-in;
+    animation: FadeUp 1000ms ease-in forwards;
   }
 </style>

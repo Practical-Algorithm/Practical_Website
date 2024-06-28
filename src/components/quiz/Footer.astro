@@ -8,37 +8,41 @@ interface Props {
 const { isAnswered } = Astro.props;
 ---
 
-<footer
-  class="player__footer"
-  class:list={[
-    {
-      player__answered: isAnswered,
-    },
-  ]}
->
-  {
-    isAnswered ? (
-      <div class="footer__title">
-        <div class="footer__headline">
-          <div class="icon-wrapper">
-            <Icon name="mdi/report" />
+{
+  isAnswered && (
+    <footer
+      class="player__footer"
+      class:list={[
+        {
+          player__answered: isAnswered,
+        },
+      ]}
+    >
+      {isAnswered ? (
+        <div class="footer__title">
+          <div class="footer__headline">
+            <div class="icon-wrapper">
+              <Icon name="mdi/report" />
+            </div>
+            <span>เก่งมาก</span>
           </div>
-          <span>เก่งมาก</span>
+          <button type="button" class="report-button btn-link">
+            <Icon name="mdi/flag" size={24} />
+            <span>Report</span>
+          </button>
         </div>
-        <button type="button" class="report-button btn-link">
-          <Icon name="mdi/flag" size={24} />
-          <span>Report</span>
+      ) : (
+        <div />
+      )}
+
+      <div>
+        <button type="button" class="footer-button">
+          Continue
         </button>
       </div>
-    ) : (
-      <div />
-    )
-  }
-
-  <div>
-    <button type="button" class="footer-button">Continue</button>
-  </div>
-</footer>
+    </footer>
+  )
+}
 
 <style>
   .player__footer {

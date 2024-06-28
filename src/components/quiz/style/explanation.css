@@ -4,7 +4,7 @@
   grid-column: 5/-1;
   @apply pb-[120px] md:pb-[100px] lg:pb-[120px];
 
-  --delay-duration: 1000ms;
+  --delay-duration: 1800ms;
   --animation-duration: 200ms;
 }
 
@@ -34,12 +34,6 @@
 
 .quiz-option-incorrect {
   @apply text-fg-error-primary;
-}
-
-.detail-title {
-  @apply font-bold;
-  @apply text-xl md:text-display-sm;
-  @apply lg:hidden lg:invisible;
 }
 
 @keyframes fadeOut {
@@ -86,6 +80,7 @@
 .details {
   /* @apply absolute top-0 left-0; */
   @apply opacity-0;
+  @apply lg:ml-6 p-1;
   animation: fadeIn calc(var(--animation-duration) + var(--delay-duration))
     forwards ease-out var(--delay-duration);
 }
@@ -105,7 +100,7 @@ blockquote::before {
 }
 
 .detail-title {
-  @apply text-display-sm font-bold;
+  @apply text-xl md:text-display-sm font-bold;
   @apply mb-6;
 }
 
