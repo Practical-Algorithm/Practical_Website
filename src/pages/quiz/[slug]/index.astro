@@ -1,9 +1,8 @@
 ---
-import Explanation from "@/components/quiz/Explanation.astro";
 import Footer from "@/components/quiz/Footer.astro";
 import QuizLayout from "@/layouts/QuizLayout.astro";
 import ProgressBar from "@/components/quiz/ProgressBar.astro";
-import ChoicesForm from "@/components/quiz/ChoicesForm.astro";
+import AnswerSection from "@/components/quiz/AnswerSection.astro";
 
 import { getEntry } from "astro:content";
 
@@ -22,7 +21,40 @@ if (!quizEntry) {
   throw new Error(`Quiz not found: ${slug}`);
 }
 
-const isAnswered = false;
+const { quizImage } = quizEntry.data;
+
+const cookieKey = `quiz-${slug}`;
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const playerAnswer = data.get("player__answer");
+
+    if (typeof playerAnswer !== "string") {
+      throw new Error("No answer provided");
+    }
+
+    Astro.cookies.set(
+      cookieKey,
+      JSON.stringify({ answerIndex: playerAnswer }),
+      {
+        maxAge: 60 * 60 * 24 * 7,
+      }
+    );
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+
+let answerIndex = 1;
+if (Astro.cookies.has(cookieKey)) {
+  const cookieValue = Astro.cookies.get(cookieKey);
+  const { answerIndex: cookieAnswerIndex } = cookieValue?.json();
+  answerIndex = cookieAnswerIndex;
+}
+const isAnswered = answerIndex !== null;
 ---
 
 <QuizLayout>
@@ -39,18 +71,18 @@ const isAnswered = false;
   </header>
   <div class="lesson-scroll-area">
     <main class="quiz__content">
-      <QuestionTitle {quizEntry} />
+      <QuestionTitle {quizEntry} {isAnswered} />
       <article class="main-content scrollable-area">
         <div class="image-card">
           <Image
-            src="/blog-placeholder-1.jpg"
+            src={quizImage}
             alt="Quiz-card"
-            width={960}
-            height={480}
+            width={1008}
+            height={562}
             class="rounded-lg"
           />
         </div>
-        {isAnswered ? <Explanation {quizEntry} /> : <ChoicesForm {quizEntry} />}
+        <AnswerSection {answerIndex} {quizEntry} />
       </article>
       <Footer {isAnswered} />
     </main>

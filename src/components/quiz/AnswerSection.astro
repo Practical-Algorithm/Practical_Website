@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Explanation from "./Explanation.astro";
+import ChoicesForm from "./ChoicesForm.tsx";
+
+interface Props {
+  answerIndex?: number;
+  quizEntry: CollectionEntry<"quiz">;
+}
+
+const { quizEntry, answerIndex } = Astro.props;
+const isAnswered = !!answerIndex;
+---
+
+{
+  isAnswered ? (
+    <Explanation {answerIndex} quizEntry={quizEntry} />
+  ) : (
+    <ChoicesForm client:load quizEntry={quizEntry} />
+  )
+}

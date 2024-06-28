@@ -1,19 +1,61 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import "./explanation.css";
+import "./style/ChoicesForm.css";
+import "./style/explanation.css";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
+  answerIndex: number;
   quizEntry: CollectionEntry<"quiz">;
 }
 
-const { quizEntry } = Astro.props as Props;
-const { title } = quizEntry.data;
+const { quizEntry, answerIndex } = Astro.props as Props;
+const { title, answers, correctAnswerIndex } = quizEntry.data;
 const { Content } = await quizEntry.render();
+
+const isCorrect = answerIndex === correctAnswerIndex;
 ---
 
-<section class="details">
-  <h1 class="detail-title">{title}</h1>
-  <div class="formatted-content">
-    <Content />
+<div class="explanation-wrapper">
+  <div class="choices">
+    <ul>
+      {
+        answers &&
+          answers.map((answer, index) => (
+            <li
+              class="quiz__quiz-option-wrapper"
+              class:list={[
+                {
+                  "quiz__quiz-option-wrapper--correct":
+                    index === correctAnswerIndex,
+                  "quiz__quiz-option-wrapper--incorrect":
+                    !isCorrect && index === answerIndex,
+                },
+              ]}
+            >
+              <div class="quiz__quiz-option">
+                <span class="quiz-option-text">{answer.detail}</span>
+                {index === correctAnswerIndex && (
+                  <span class="quiz-option-indicator quiz-option-correct">
+                    <Icon name="mdi/check_circle" />
+                  </span>
+                )}
+                {index === answerIndex && index !== correctAnswerIndex && (
+                  <span class="quiz-option-indicator quiz-option-incorrect">
+                    <Icon name="mdi/cancel" />
+                  </span>
+                )}
+              </div>
+            </li>
+          ))
+      }
+    </ul>
   </div>
-</section>
+
+  <section class="details">
+    <h1 class="detail-title">{title}</h1>
+    <div class="formatted-content">
+      <Content />
+    </div>
+  </section>
+</div>

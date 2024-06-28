@@ -1,5 +1,6 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
+import { ViewTransitions } from "astro:transitions";
 
 // !! Change this to your page title and description
 const title = "Quiz";
@@ -35,7 +36,7 @@ const description = "Quiz description";
       window.localStorage.setItem("theme", theme);
     </script>
   </head>
-
+  <ViewTransitions />
   <body class="app-container overflow-hidden">
     <div class="scrollable-area lg:max-w-[1440px] mx-auto">
       <slot />

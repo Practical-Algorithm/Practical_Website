@@ -1,0 +1,31 @@
+---
+import QuizLayout from "@/layouts/QuizLayout.astro";
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    console.log(data);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<QuizLayout>
+  <form method="post">
+    <button type="submit" value="1">
+      <input type="radio" name="dat" value="1" id="dat1" />
+      <label for="dat1">jd</label>
+    </button>
+    <button type="submit">
+      <input type="radio" name="dat" value="2" id="dat2" />
+      <label for="dat2">jd</label>
+    </button>
+    <button type="submit">
+      <input type="radio" name="dat" value="3" id="dat3" />
+      <label for="dat3">jd</label>
+    </button>
+  </form>
+</QuizLayout>

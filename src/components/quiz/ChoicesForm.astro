@@ -10,21 +10,34 @@ const { quizEntry } = Astro.props;
 const { answers } = quizEntry.data;
 ---
 
-<section class="choices">
+<form method="post" class="choices">
   <ul>
     {
       answers &&
         answers.map((answer, index) => (
           <li class="quiz__quiz-option-wrapper">
-            <button class="quiz__quiz-option" type="button">
-              <span class="quiz-option-text">{answer.detail}</span>
-              <span class="quiz-option-number">{index + 1}</span>
+            <button type="submit" class="w-full" value={index}>
+              <label
+                class="quiz__quiz-option"
+                tabindex="0"
+                for={`player__choice-${index}`}
+              >
+                <span class="quiz-option-text">{answer.detail}</span>
+                <span class="quiz-option-number">{index + 1}</span>
+              </label>
+              <input
+                type="radio"
+                id={`player__choice-${index}`}
+                name="player__answer"
+                value={index}
+                class="hidden"
+              />
             </button>
           </li>
         ))
     }
   </ul>
-</section>
+</form>
 
 <style>
   .choices {
@@ -50,7 +63,6 @@ const { answers } = quizEntry.data;
     @apply min-h-16;
     @apply flex items-center w-full p-4 rounded-2xl grow bg-bg-secondary;
     @apply cursor-pointer;
-    /* @apply border-border-icon-modern border-2 border-solid; */
     @apply text-fg-primary;
     @apply shadow-border-icon-modern;
 
@@ -83,5 +95,6 @@ const { answers } = quizEntry.data;
     @apply rounded-lg;
     @apply ml-auto;
     @apply border-border-icon-modern border-2 border-solid;
+    @apply text-fg-secondary;
   }
 </style>

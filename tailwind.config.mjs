@@ -69,9 +69,9 @@ export default {
         tertiary: "rgba(var(--border-tertiary), <alpha-value>)",
         disabled: "rgba(var(--border-disabled), <alpha-value>)",
         brand: {
-          primary: "rgba(var(--border-brand-primary), <alpha-value>)",
-          secondary: "rgba(var(--border-brand-secondary), <alpha-value>)",
-          tertiary: "rgba(var(--border-brand-tertiary), <alpha-value>)",
+          solid: "rgba(var(--border-brand-solid), <alpha-value>)",
+          solid_alt: "rgba(var(--border-brand-solid_alt), <alpha-value>)",
+          brand: "rgba(var(--border-brand), <alpha-value>)",
         },
         error: "rgba(var(--border-error), <alpha-value>)",
         icon: {
