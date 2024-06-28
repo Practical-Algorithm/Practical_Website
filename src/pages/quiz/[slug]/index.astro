@@ -21,7 +21,7 @@ if (!quizEntry) {
   throw new Error(`Quiz not found: ${slug}`);
 }
 
-const { quizImage } = quizEntry.data;
+const { quizImage, correctAnswerIndex } = quizEntry.data;
 
 const cookieKey = `quiz-${slug}`;
 
@@ -56,6 +56,7 @@ if (Astro.cookies.has(cookieKey)) {
   Astro.cookies.delete(cookieKey);
 }
 const isAnswered = answerIndex !== undefined;
+const isCorrectAnswer = answerIndex === correctAnswerIndex;
 ---
 
 <QuizLayout>
@@ -77,6 +78,7 @@ const isAnswered = answerIndex !== undefined;
       <article class="main-content scrollable-area">
         <div class="image-card">
           <Image
+            transition:name="player__quiz_image"
             src={quizImage}
             alt="Quiz-card"
             width={1253}
@@ -84,9 +86,9 @@ const isAnswered = answerIndex !== undefined;
             class="rounded-lg"
           />
         </div>
-        <AnswerSection {answerIndex} {quizEntry} />
+        <AnswerSection {answerIndex} {slug} {quizEntry} />
       </article>
-      <Footer {isAnswered} />
+      <Footer {isAnswered} {isCorrectAnswer} />
     </main>
   </div>
 </QuizLayout>

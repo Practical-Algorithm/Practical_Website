@@ -37,16 +37,17 @@ const { title } = quizEntry.data;
   @keyframes FadeUp {
     from {
       opacity: 1;
-      @apply visible;
       grid-template-rows: 1fr;
     }
     30% {
-      opacity: 0;
       grid-template-rows: 1fr;
     }
 
     50% {
       grid-template-rows: 1fr;
+    }
+    70% {
+      opacity: 0;
     }
     99% {
       opacity: 0;

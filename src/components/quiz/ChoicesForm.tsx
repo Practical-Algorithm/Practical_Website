@@ -1,13 +1,15 @@
 import React from "react";
 import type { CollectionEntry } from "astro:content";
+import { navigate } from "astro:transitions/client";
 import "./style/explanation.css";
 import "./style/ChoicesForm.css";
 
 interface Props {
+  slug: string;
   quizEntry: CollectionEntry<"quiz">;
 }
 
-const ChoicesForm = ({ quizEntry }: Props) => {
+const ChoicesForm = ({ slug, quizEntry }: Props) => {
   const { answers } = quizEntry.data;
   const formRef = React.useRef<HTMLFormElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -15,12 +17,20 @@ const ChoicesForm = ({ quizEntry }: Props) => {
   const handleChoiceClick = (choiceIndex) => {
     inputRef.current.value = choiceIndex;
     const formData = new FormData(formRef.current);
-    // console.log(formData.get("player__answer"));
-    formRef.current?.submit(formData);
+    // // console.log(formData.get("player__answer"));
+    // formRef.current?.submit(formData);
+    navigate(`/quiz/${slug}`, {
+      formData,
+    });
   };
 
   return (
-    <form method="post" className="choices" ref={formRef}>
+    <form
+      method="post"
+      className="choices"
+      ref={formRef}
+      enctype="application/x-www-form-urlencoded"
+    >
       <input type="hidden" name="player__answer" value="" ref={inputRef} />
       <ul>
         {answers &&

@@ -10,7 +10,34 @@
 
 /* Correct / Incorrect Answer */
 
+/* @keyframes Indicate {
+  from {
+    background-color: var(--background-color-start);
+    color: var(--color-start);
+    border-color: var(--border-color-start);
+  }
+  to {
+    background-color: var(--background-color-end);
+    color: var(--color-end);
+    border-color: var(--border-color-end);
+  }
+} */
+
+.explanation-wrapper .quiz__quiz-option {
+  /* --color-start: var(--fg-primary);
+  --border-color-start: var(--border-icon-modern);
+  --background-color-start: var(--bg-secondary); */
+  transition: background-color 2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s,
+    color 2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s,
+    box-shadow 2s cubic-bezier(0.25, 0.01, 0.25, 1) 0s;
+}
+
 .explanation-wrapper .quiz__quiz-option-wrapper--correct > .quiz__quiz-option {
+  /* --background-color-end: var(--bg-success-secondary);
+  --color-end: var(--fg-success-primary);
+  --border-color-end: var(--border-brand); */
+  /* animation: Indicate 0.2s cubic-bezier(0.25, 0.01, 0.25, 1); */
+
   @apply bg-bg-success-secondary text-fg-success-primary shadow-border-brand-brand;
 }
 

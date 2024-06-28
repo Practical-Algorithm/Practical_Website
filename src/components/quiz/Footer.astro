@@ -3,9 +3,10 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
   isAnswered: boolean;
+  isCorrectAnswer: boolean;
 }
 
-const { isAnswered } = Astro.props;
+const { isAnswered, isCorrectAnswer } = Astro.props;
 ---
 
 {
@@ -18,26 +19,30 @@ const { isAnswered } = Astro.props;
         },
       ]}
     >
-      {isAnswered ? (
-        <div class="footer__title">
-          <div class="footer__headline">
-            <div class="icon-wrapper">
-              <Icon name="mdi/report" />
-            </div>
-            <span>เก่งมาก</span>
+      <div class="footer__title">
+        <div class="footer__headline">
+          <div class="icon-wrapper">
+            <Icon name="mdi/report" />
           </div>
-          <button type="button" class="report-button btn-link">
-            <Icon name="mdi/flag" size={24} />
-            <span>Report</span>
-          </button>
+          <span>{isCorrectAnswer ? "เก่งมาก" : "ลองใหม่นะ"}</span>
         </div>
-      ) : (
-        <div />
-      )}
+        <button type="button" class="report-button btn-link">
+          <Icon name="mdi/flag" size={24} />
+          <span>รายงานข้อผิดพลาด</span>
+        </button>
+      </div>
 
       <div>
-        <button type="button" class="footer-button">
-          Continue
+        <button
+          type="button"
+          class="footer-button"
+          class:list={[
+            {
+              "footer-button--incorrect": !isCorrectAnswer,
+            },
+          ]}
+        >
+          ข้อต่อไป
         </button>
       </div>
     </footer>
@@ -99,6 +104,14 @@ const { isAnswered } = Astro.props;
     @apply bg-button-primary-bg_hover text-button-primary-fg_hover;
   }
 
+  .player__answered .footer-button.footer-button--incorrect {
+    @apply bg-button-primary-error-bg text-button-primary-error-fg;
+  }
+
+  .player__answered .footer-button:hover.footer-button--incorrect {
+    @apply bg-button-primary-error-bg_hover text-button-primary-error-fg_hover;
+  }
+
   .report-button {
     @apply text-fg-tertiary;
     @apply hidden invisible;
@@ -107,7 +120,7 @@ const { isAnswered } = Astro.props;
   .player__answered .report-button {
     @apply flex items-center justify-center gap-2 visible;
     @apply text-center;
-    @apply md:ml-4;
+    @apply md:ml-4 px-4;
     @apply md:min-w-44 md:h-16;
     @apply font-bold text-md md:text-xl;
     @apply rounded-xl md:rounded-2xl;

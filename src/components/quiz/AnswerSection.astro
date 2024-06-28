@@ -4,11 +4,12 @@ import Explanation from "./Explanation.astro";
 import ChoicesForm from "./ChoicesForm.tsx";
 
 interface Props {
+  slug: string;
   answerIndex?: number;
   quizEntry: CollectionEntry<"quiz">;
 }
 
-const { quizEntry, answerIndex } = Astro.props;
+const { quizEntry, answerIndex, slug } = Astro.props;
 const isAnswered = answerIndex !== undefined;
 ---
 
@@ -16,6 +17,6 @@ const isAnswered = answerIndex !== undefined;
   isAnswered ? (
     <Explanation {answerIndex} quizEntry={quizEntry} />
   ) : (
-    <ChoicesForm client:load quizEntry={quizEntry} />
+    <ChoicesForm client:load slug={slug} quizEntry={quizEntry} />
   )
 }
