@@ -48,11 +48,12 @@ if (Astro.request.method === "POST") {
   }
 }
 
-let answerIndex = 1;
+let answerIndex = undefined;
 if (Astro.cookies.has(cookieKey)) {
   const cookieValue = Astro.cookies.get(cookieKey);
   const { answerIndex: cookieAnswerIndex } = cookieValue?.json();
-  answerIndex = cookieAnswerIndex;
+  answerIndex = parseInt(cookieAnswerIndex);
+  Astro.cookies.delete(cookieKey);
 }
 const isAnswered = answerIndex !== null;
 ---

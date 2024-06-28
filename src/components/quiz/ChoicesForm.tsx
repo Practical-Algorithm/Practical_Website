@@ -9,20 +9,35 @@ interface Props {
 
 const ChoicesForm = ({ quizEntry }: Props) => {
   const { answers } = quizEntry.data;
+  const formRef = React.useRef<HTMLFormElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const handleChoiceClick = (choiceIndex) => {
-    console.log(choiceIndex);
+    inputRef.current.value = choiceIndex;
+    const formData = new FormData(formRef.current);
+    // console.log(formData.get("player__answer"));
+    formRef.current?.submit(formData);
   };
 
   return (
-    <form method="post" className="choices">
+    <form method="post" className="choices" ref={formRef}>
+      <input type="hidden" name="player__answer" value="" ref={inputRef} />
       <ul>
         {answers &&
           answers.map((answer, index) => (
             <li
+              tabIndex={0}
+              role="button"
+              aria-pressed="false"
               key={`player__answer-choice-${index}`}
               className="quiz__quiz-option-wrapper"
               onClick={() => handleChoiceClick(index)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  console.log(e);
+                  handleChoiceClick(index);
+                }
+              }}
             >
               <div className="quiz__quiz-option">
                 <span className="quiz-option-text">{answer.detail}</span>

@@ -14,6 +14,8 @@ const { title, answers, correctAnswerIndex } = quizEntry.data;
 const { Content } = await quizEntry.render();
 
 const isCorrect = answerIndex === correctAnswerIndex;
+console.log("isCorrect", isCorrect);
+console.log("answerIndex", answerIndex, typeof answerIndex);
 ---
 
 <div class="explanation-wrapper">

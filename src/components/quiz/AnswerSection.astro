@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { quizEntry, answerIndex } = Astro.props;
-const isAnswered = !!answerIndex;
+const isAnswered = answerIndex !== undefined;
 ---
 
 {
