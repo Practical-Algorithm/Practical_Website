@@ -1,12 +1,20 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import BaseLayout, { type Meta } from "./BaseLayout.astro";
 
 // !! Change this to your page title and description
-const title = "Quiz";
-const description = "Quiz description";
+const defaultQuizMeta = {
+  title: "Quiz",
+  description: "Quiz Description",
+};
+
+type Props = {
+  meta?: Meta;
+};
+
+const { meta = defaultQuizMeta } = Astro.props;
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {meta}>
   <body class="app-container overflow-hidden">
     <div class="scrollable-area lg:max-w-[1440px] mx-auto">
       <slot />

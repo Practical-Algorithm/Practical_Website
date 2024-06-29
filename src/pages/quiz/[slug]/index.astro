@@ -3,6 +3,7 @@ import Footer from "@/components/quiz/Footer.astro";
 import QuizLayout from "@/layouts/QuizLayout.astro";
 import ProgressBar from "@/components/quiz/ProgressBar.astro";
 import AnswerSection from "@/components/quiz/AnswerSection.astro";
+import type { Meta } from "@/layouts/BaseLayout.astro";
 
 import { getEntry } from "astro:content";
 
@@ -21,7 +22,7 @@ if (!quizEntry) {
   throw new Error(`Quiz not found: ${slug}`);
 }
 
-const { quizImage, correctAnswerIndex } = quizEntry.data;
+const { quizImage, correctAnswerIndex, title } = quizEntry.data;
 
 const cookieKey = `quiz-${slug}`;
 
@@ -57,9 +58,15 @@ if (Astro.cookies.has(cookieKey)) {
 }
 const isAnswered = answerIndex !== undefined;
 const isCorrectAnswer = answerIndex === correctAnswerIndex;
+
+// Meta
+const meta: Meta = {
+  title: slug,
+  description: title,
+};
 ---
 
-<QuizLayout>
+<QuizLayout {meta}>
   <header class="quiz__header">
     <button type="button" class="quiz__close-button btn-link icon-only">
       <Icon name="ion/close-outline" size={24} />

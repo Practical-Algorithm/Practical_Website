@@ -29,7 +29,7 @@ const ChoicesForm = ({ slug, quizEntry }: Props) => {
       method="post"
       className="choices"
       ref={formRef}
-      enctype="application/x-www-form-urlencoded"
+      encType="application/x-www-form-urlencoded"
     >
       <input type="hidden" name="player__answer" value="" ref={inputRef} />
       <ul>
