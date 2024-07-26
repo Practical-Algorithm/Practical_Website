@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+import PillBadge from "@/components/ui/PillBadge.astro";
+
+interface Props {
+  title: string;
+  author: string;
+  pubDate: string;
+  description: string;
+  tags: string[];
+  imageSource: string;
+  imageAlt: string;
+  mostRecent?: boolean;
+}
+
+const {
+  mostRecent = false,
+  imageSource,
+  imageAlt,
+  title,
+  author,
+  pubDate,
+  description,
+  tags,
+} = Astro.props;
+---
+
+<article class:list={[{ "most-recent-blog": mostRecent }]}>
+  <div class="image rounded-2xl">
+    <Image src={imageSource} height={2000} width={3200} alt={imageAlt} />
+  </div>
+
+  <div class="post-content">
+    <div class="heading">
+      <div class="meta">{author} • {pubDate}</div>
+      <div class="title">
+        <h5>{title}</h5>
+      </div>
+      <p class="article-desc">
+        {description}
+      </p>
+    </div>
+    <div class="tags">
+      {
+        tags.map((tag) => (
+          <PillBadge size="md" color="brand">
+            {tag}
+          </PillBadge>
+        ))
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    @apply flex gap-5;
+    @apply flex-col;
+    @apply xl:flex-row;
+    max-width: 592px;
+  }
+  .most-recent-blog {
+    @apply row-span-2 flex-col;
+  }
+
+  .tags {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .article-desc {
+    @apply text-text-tertiary line-clamp-2;
+  }
+
+  .most-recent-blog .article-desc {
+    @apply line-clamp-3;
+  }
+
+  .meta {
+    @apply text-text-brand-secondary font-semibold text-sm;
+  }
+  .title {
+    @apply flex w-full justify-between items-center;
+    @apply text-display-xs font-semibold text-text-primary;
+  }
+
+  .heading {
+    @apply grid grid-cols-1 gap-2;
+  }
+
+  .post-content {
+    @apply flex flex-col gap-6 grow basis-0;
+  }
+
+  .image {
+    @apply w-full xl:w-80;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .most-recent-blog .image {
+    @apply w-full;
+    @apply xl:h-60;
+  }
+</style>

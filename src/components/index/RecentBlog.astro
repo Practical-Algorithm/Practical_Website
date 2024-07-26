@@ -1,107 +1,43 @@
 ---
-import { Image } from "astro:assets";
-import PillBadge from "@/components/ui/PillBadge.astro";
 import { Button } from "@/components/ui/button";
 import { Icon } from "astro-icon/components";
+import BlogCard from "../blog/BlogCard.astro";
 ---
 
 <section class="recent-blog">
-  <header>Recent blog posts</header>
+  <header><h2>Recent blog posts</h2></header>
   <div class="contents">
     <!-- Recent post -->
-    <article class="most-recent-blog">
-      <div class="image">
-        <Image
-          src="/images/post-image1.png"
-          height={2000}
-          width={3200}
-          alt="About me Image"
-          class="rounded-2xl"
-        />
-      </div>
-
-      <div class="post-content">
-        <div class="heading">
-          <div class="meta">Olivia Rhye • 20 Jan 2024</div>
-          <div class="title">
-            <h5>Migrating to Linear 101</h5>
-          </div>
-          <p class="article-desc">
-            How do you create compelling presentations that wow your colleagues
-            and impress your managers? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Reprehenderit iste, fugit maxime excepturi nulla
-            vel, similique non repudiandae pariatur ullam, ex quidem minima
-            mollitia officia facilis corrupti voluptates dolore quam.
-          </p>
-        </div>
-        <div class="tags">
-          <PillBadge size="md" color="brand">Design</PillBadge>
-          <PillBadge size="md" color="brand">Research</PillBadge>
-          <PillBadge size="md" color="brand">Development</PillBadge>
-        </div>
-      </div>
-    </article>
-    <!-- Other posts -->
-    <article>
-      <Image
-        src="/images/post-image1.png"
-        height={200}
-        width={320}
-        alt="About me Image"
-        class="rounded-2xl"
-      />
-
-      <div class="post-content">
-        <div class="heading">
-          <div class="meta">Olivia Rhye • 20 Jan 2024</div>
-          <div class="title">
-            <h5>Migrating to Linear 101</h5>
-          </div>
-          <p class="article-desc">
-            How do you create compelling presentations that wow your colleagues
-            and impress your managers? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Reprehenderit iste, fugit maxime excepturi nulla
-            vel, similique non repudiandae pariatur ullam, ex quidem minima
-            mollitia officia facilis corrupti voluptates dolore quam.
-          </p>
-        </div>
-        <div class="tags">
-          <PillBadge size="md" color="brand">Design</PillBadge>
-          <PillBadge size="md" color="brand">Research</PillBadge>
-          <PillBadge size="md" color="brand">Development</PillBadge>
-        </div>
-      </div>
-    </article>
-    <article>
-      <Image
-        src="/images/post-image3.png"
-        height={200}
-        width={320}
-        alt="About me Image"
-        class="rounded-2xl"
-      />
-
-      <div class="post-content">
-        <div class="heading">
-          <div class="meta">Olivia Rhye • 20 Jan 2024</div>
-          <div class="title">
-            <h5>Migrating to Linear 101</h5>
-          </div>
-          <p class="article-desc">
-            How do you create compelling presentations that wow your colleagues
-            and impress your managers? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Reprehenderit iste, fugit maxime excepturi nulla
-            vel, similique non repudiandae pariatur ullam, ex quidem minima
-            mollitia officia facilis corrupti voluptates dolore quam.
-          </p>
-        </div>
-        <div class="tags">
-          <PillBadge size="md" color="brand">Design</PillBadge>
-          <PillBadge size="md" color="brand">Research</PillBadge>
-          <PillBadge size="md" color="brand">Development</PillBadge>
-        </div>
-      </div>
-    </article>
+    <BlogCard
+      title="Migrating to Linear 101"
+      author="Olivia Rhye"
+      pubDate="20 Jan 2024"
+      description="How do you create compelling presentations that wow your colleagues and impress your managers? lorem ipsum dolor sit ametha ths wcro npcro nedc will you be able to do it?"
+      tags={["Design", "Research", "Development"]}
+      imageSource="/images/post-image1.png"
+      imageAlt="About me Image"
+      mostRecent={true}
+    />
+    <BlogCard
+      title="Migrating to Linear 101"
+      author="Olivia Rhye"
+      pubDate="20 Jan 2024"
+      description="How do you create compelling presentations that wow your colleagues and impress your managers?"
+      tags={["Design", "Research", "Development"]}
+      imageSource="/images/post-image1.png"
+      imageAlt="About me Image"
+      mostRecent={false}
+    />
+    <BlogCard
+      title="Migrating to Linear 101"
+      author="Olivia Rhye"
+      pubDate="20 Jan 2024"
+      description="How do you create compelling presentations that wow your colleagues and impress your managers?"
+      tags={["Design", "Research", "Development"]}
+      imageSource="/images/post-image1.png"
+      imageAlt="About me Image"
+      mostRecent={false}
+    />
   </div>
   <Button size="link_lg" variant="link_color" className="mx-auto"
     >Read all blogs <Icon name="untitled/arrow-right" /></Button
@@ -121,51 +57,8 @@ import { Icon } from "astro-icon/components";
     @apply grid gap-8;
 
     @apply grid-cols-1;
+
     @apply md:grid-cols-3 md:grid-rows-1;
-    @apply lg:grid-cols-2 lg:grid-rows-2;
-  }
-
-  .recent-blog .contents article {
-    @apply flex gap-5;
-    @apply flex-col;
-    @apply lg:flex-row;
-    max-width: 592px;
-  }
-  .recent-blog .contents .most-recent-blog {
-    @apply row-span-2 flex-col;
-  }
-
-  .contents .tags {
-    @apply flex flex-wrap gap-2;
-  }
-
-  .article-desc {
-    @apply text-text-tertiary line-clamp-2;
-  }
-
-  .most-recent-blog .article-desc {
-    @apply line-clamp-3;
-  }
-
-  .meta {
-    @apply text-text-brand-secondary font-semibold text-sm;
-  }
-  .title {
-    @apply flex w-full justify-between items-center;
-    @apply text-display-xs font-semibold text-text-primary;
-  }
-
-  .heading {
-    @apply grid grid-cols-1 gap-2;
-  }
-
-  .post-content {
-    @apply flex flex-col gap-6 grow basis-0;
-  }
-
-  .image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
+    @apply xl:grid-cols-2 xl:grid-rows-2;
   }
 </style>
