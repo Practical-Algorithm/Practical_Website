@@ -40,6 +40,7 @@ if (Astro.request.method === "POST") {
       JSON.stringify({ answerIndex: playerAnswer }),
       {
         maxAge: 60 * 60 * 24 * 7,
+        sameSite: "strict",
       }
     );
   } catch (error) {
@@ -68,6 +69,36 @@ const meta: Meta = {
 
 <QuizLayout {meta}>
   <header class="quiz__header">
+    {
+      isAnswered && <script
+      is:inline
+      define:vars={{
+        isCorrectAnswer,
+      }}
+      data-astro-rerun
+    >
+      // Play success or failure audio
+      const audioPathId = isCorrectAnswer
+        ? "correct"
+        : "failure";
+
+      try {
+        const audioElement = document.querySelector(`#${audioPathId}`);
+        console.log(audioElement)
+        audioElement.play();
+      } catch (err) {
+        console.error(err);
+      }
+    </script>
+    }
+    <audio preload="auto" id="correct">
+      <source src="/audio/quiz_correct.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio preload="auto" id="failure">
+      <source src="/audio/quiz_failure.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
     <button type="button" class="quiz__close-button btn-link icon-only">
       <Icon name="ion/close-outline" size={24} />
     </button>
@@ -95,7 +126,7 @@ const meta: Meta = {
         </div>
         <AnswerSection {answerIndex} {slug} {quizEntry} />
       </article>
-      <Footer {isAnswered} {isCorrectAnswer} />
+      <Footer {isAnswered} {isCorrectAnswer} {slug} />
     </main>
   </div>
 </QuizLayout>

@@ -17,8 +17,6 @@ const ChoicesForm = ({ slug, quizEntry }: Props) => {
   const handleChoiceClick = (choiceIndex) => {
     inputRef.current.value = choiceIndex;
     const formData = new FormData(formRef.current);
-    // // console.log(formData.get("player__answer"));
-    // formRef.current?.submit(formData);
     navigate(`/quiz/${slug}`, {
       formData,
     });

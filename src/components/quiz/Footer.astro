@@ -4,9 +4,10 @@ import { Icon } from "astro-icon/components";
 interface Props {
   isAnswered: boolean;
   isCorrectAnswer: boolean;
+  slug: string;
 }
 
-const { isAnswered, isCorrectAnswer } = Astro.props;
+const { isAnswered, isCorrectAnswer, slug } = Astro.props;
 ---
 
 {
@@ -33,17 +34,19 @@ const { isAnswered, isCorrectAnswer } = Astro.props;
       </div>
 
       <div>
-        <button
-          type="button"
-          class="footer-button"
-          class:list={[
-            {
-              "footer-button--incorrect": !isCorrectAnswer,
-            },
-          ]}
-        >
-          ข้อต่อไป
-        </button>
+        <a href={`./${slug}`}>
+          <button
+            type="button"
+            class="footer-button"
+            class:list={[
+              {
+                "footer-button--incorrect": !isCorrectAnswer,
+              },
+            ]}
+          >
+            ข้อต่อไป
+          </button>
+        </a>
       </div>
     </footer>
   )
