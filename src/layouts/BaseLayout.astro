@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import { ViewTransitions } from "astro:transitions";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
 export type Meta = {
   title: string;
@@ -12,8 +13,8 @@ type Props = {
 };
 
 const defaultMeta = {
-  title: "Practical Algorithm",
-  description: "",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
 };
 
 const { meta = defaultMeta } = Astro.props;

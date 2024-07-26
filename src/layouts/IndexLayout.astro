@@ -1,17 +1,16 @@
 ---
 import Footer from "@/components/index/Footer.astro";
 import Header from "@/components/index/Header.astro";
-import BaseLayout from "./BaseLayout.astro";
+import BaseLayout, { type Meta } from "./BaseLayout.astro";
 
 type Props = {
-  title: string;
-  description: string;
+  meta?: Meta;
 };
 
-const { title = "Home", description = "This is a home page" } = Astro.props;
+const { meta } = Astro.props;
 ---
 
-<BaseLayout {title} {description}>
+<BaseLayout {meta}>
   <body class="bg-bg-primary text-text-primary">
     <Header />
     <main class="max-w-7xl mx-auto">
