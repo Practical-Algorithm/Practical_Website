@@ -5,6 +5,7 @@ import PillBadge from "@/components/ui/PillBadge.astro";
 interface Props {
   title: string;
   author: string;
+  slug: string;
   pubDate: string;
   description: string;
   tags: string[];
@@ -16,6 +17,7 @@ interface Props {
 const {
   mostRecent = false,
   imageSource,
+  slug,
   imageAlt,
   title,
   author,
@@ -25,32 +27,34 @@ const {
 } = Astro.props;
 ---
 
-<article class:list={[{ "most-recent-blog": mostRecent }]}>
-  <div class="image rounded-2xl">
-    <Image src={imageSource} height={2000} width={3200} alt={imageAlt} />
-  </div>
+<a href={slug}>
+  <article class:list={[{ "most-recent-blog": mostRecent }]}>
+    <div class="image rounded-2xl">
+      <Image src={imageSource} height={2000} width={3200} alt={imageAlt} />
+    </div>
 
-  <div class="post-content">
-    <div class="heading">
-      <div class="meta">{author} • {pubDate}</div>
-      <div class="title">
-        <h5>{title}</h5>
+    <div class="post-content">
+      <div class="heading">
+        <div class="meta">{author} • {pubDate}</div>
+        <div class="title">
+          <h5>{title}</h5>
+        </div>
+        <p class="article-desc">
+          {description}
+        </p>
       </div>
-      <p class="article-desc">
-        {description}
-      </p>
+      <div class="tags">
+        {
+          tags.map((tag) => (
+            <PillBadge size="md" color="brand">
+              {tag}
+            </PillBadge>
+          ))
+        }
+      </div>
     </div>
-    <div class="tags">
-      {
-        tags.map((tag) => (
-          <PillBadge size="md" color="brand">
-            {tag}
-          </PillBadge>
-        ))
-      }
-    </div>
-  </div>
-</article>
+  </article>
+</a>
 
 <style>
   article {

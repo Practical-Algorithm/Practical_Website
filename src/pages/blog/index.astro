@@ -2,6 +2,9 @@
 import BlogCard from "@/components/blog/BlogCard.astro";
 import IndexLayout from "@/layouts/IndexLayout.astro";
 import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { fade } from "astro:transitions";
 
 const allTags: string[] = [
   "View all",
@@ -14,13 +17,21 @@ const allTags: string[] = [
   "Tech",
 ];
 
-const defaultTag = "View all";
-let { tag } = Astro.params;
-console.log(tag);
-if (tag === undefined || !allTags.includes(tag)) {
-  tag = defaultTag;
-}
-console.log(tag);
+const allBlogs = await getCollection("blog");
+
+const data = allBlogs.map((blog) => {
+  return {
+    title: blog.data.title,
+    description: blog.data.description,
+    slug: blog.slug,
+    author: blog.data.author,
+    pubDate: blog.data.pubDate,
+    tags: blog.data.tags,
+    heroImage: blog.data.heroImage,
+    heroImageAlt: blog.data.heroImageAlt,
+  };
+});
+console.log(data);
 ---
 
 <IndexLayout>
@@ -46,16 +57,19 @@ console.log(tag);
       >
         {
           allTags.map((tagName) => (
-            <button
-              class:list={[
-                "tab_button",
-                {
-                  tab_selected: tagName === tag,
-                },
-              ]}
-            >
-              {tagName}
-            </button>
+            <>
+              <input
+                type="radio"
+                name="tag"
+                id={`tag-${tagName}`}
+                class="tab_button"
+                hx-get={`/partials/blog/tab-result?tag=${tagName}`}
+                hx-trigger="click"
+                hx-target="#blog-result"
+                hx-swap="innerHTML"
+              />
+              <label for={`tag-${tagName}`}>{tagName}</label>
+            </>
           ))
         }
       </div>
@@ -70,17 +84,18 @@ console.log(tag);
         />
       </div>
     </div>
-    <div class="blog-container">
+    <div class="blog-container" id="blog-result">
       {
-        Array.from({ length: 7 }).map((_, index) => (
+        data.map((blogData) => (
           <BlogCard
-            title="Migrating to Linear 101"
-            author="Olivia Rhye"
-            pubDate="20 Jan 2024"
-            description="How do you create compelling presentations that wow your colleagues and impress your managers? lorem ipsum dolor sit ametha ths wcro npcro nedc will you be able to do it?"
-            tags={["Design", "Research", "Development"]}
-            imageSource="/images/post-image1.png"
-            imageAlt="About me Image"
+            title={blogData.title}
+            author={blogData.author}
+            slug={`/blog/${blogData.slug}`}
+            pubDate={blogData.pubDate.toLocaleDateString()}
+            description={blogData.description}
+            tags={blogData.tags}
+            imageSource={blogData.heroImage!}
+            imageAlt={blogData.heroImageAlt!}
             mostRecent={false}
           />
         ))
@@ -91,12 +106,17 @@ console.log(tag);
 
 <style>
   .tab_button {
+    @apply hidden;
+  }
+
+  .tab_button + label {
     @apply p-1 pb-3;
     @apply text-text-quaternary text-md font-semibold;
     @apply hover:text-text-tertiary_hover;
+    @apply cursor-pointer;
   }
 
-  .tab_selected {
+  .tab_button:checked + label {
     @apply text-text-brand-secondary;
     @apply border-b-2 border-solid border-fg-brand-primary;
     @apply hover:text-text-brand-secondary;
