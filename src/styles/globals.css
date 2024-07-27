@@ -574,4 +574,8 @@
     overflow-y: auto;
     overflow-x: hidden;
   }
+
+  .custom-select select {
+    @apply appearance-none w-full bg-bg-primary border border-border-primary text-text-primary py-2.5 px-3.5 rounded-lg leading-tight focus:outline-none;
+  }
 }

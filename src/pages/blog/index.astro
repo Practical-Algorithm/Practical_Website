@@ -1,0 +1,111 @@
+---
+import BlogCard from "@/components/blog/BlogCard.astro";
+import IndexLayout from "@/layouts/IndexLayout.astro";
+import { Icon } from "astro-icon/components";
+
+const allTags: string[] = [
+  "View all",
+  "Posn",
+  "Pre-Posn",
+  "TOI",
+  "Latest",
+  "Popular",
+  "Opinion",
+  "Tech",
+];
+
+const defaultTag = "View all";
+let { tag } = Astro.params;
+console.log(tag);
+if (tag === undefined || !allTags.includes(tag)) {
+  tag = defaultTag;
+}
+console.log(tag);
+---
+
+<IndexLayout>
+  <header class="flex flex-col gap-12 items-center mx-8 my-24">
+    <div class="flex flex-col gap-6 text-center items-center">
+      <div class="flex flex-col gap-3 w-[804px]">
+        <h2 class="text-md font-semibold text-text-brand-secondary">
+          Our Blog · เรื่องเล่าชาวอัลกอ
+        </h2>
+        <h1 class="text-display-lg font-sans font-semibold">
+          พบกับเนื้อหาล่าสุดจาก เรื่องเล่าชาวอัลกอ
+        </h1>
+      </div>
+      <p class="text-xl text-text-tertiary font-baijamjuree">
+        เขียนโดยพี่ๆค่าย สอวน.& สสวท. คอมพิวเตอร์
+      </p>
+    </div>
+  </header>
+  <section class="px-8 my-24 flex flex-col gap-16">
+    <div class="flex justify-between items-end gap-8">
+      <div
+        class="flex gap-4 grow border-b border-solid border-border-secondary"
+      >
+        {
+          allTags.map((tagName) => (
+            <button
+              class:list={[
+                "tab_button",
+                {
+                  tab_selected: tagName === tag,
+                },
+              ]}
+            >
+              {tagName}
+            </button>
+          ))
+        }
+      </div>
+      <div class="custom-select w-80 text-md font-medium relative">
+        <select>
+          <option>Latest</option>
+          <option>Popular</option>
+        </select>
+        <Icon
+          name="untitled/chevron-down"
+          class="absolute right-4 top-1/2 transform -translate-y-1/2"
+        />
+      </div>
+    </div>
+    <div class="blog-container">
+      {
+        Array.from({ length: 7 }).map((_, index) => (
+          <BlogCard
+            title="Migrating to Linear 101"
+            author="Olivia Rhye"
+            pubDate="20 Jan 2024"
+            description="How do you create compelling presentations that wow your colleagues and impress your managers? lorem ipsum dolor sit ametha ths wcro npcro nedc will you be able to do it?"
+            tags={["Design", "Research", "Development"]}
+            imageSource="/images/post-image1.png"
+            imageAlt="About me Image"
+            mostRecent={false}
+          />
+        ))
+      }
+    </div>
+  </section>
+</IndexLayout>
+
+<style>
+  .tab_button {
+    @apply p-1 pb-3;
+    @apply text-text-quaternary text-md font-semibold;
+    @apply hover:text-text-tertiary_hover;
+  }
+
+  .tab_selected {
+    @apply text-text-brand-secondary;
+    @apply border-b-2 border-solid border-fg-brand-primary;
+    @apply hover:text-text-brand-secondary;
+  }
+
+  .blog-container {
+    @apply grid gap-8;
+    @apply grid-cols-1;
+    @apply md:grid-cols-2;
+    @apply xl:grid-cols-1;
+  }
+</style>

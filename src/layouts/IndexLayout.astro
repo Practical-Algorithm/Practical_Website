@@ -5,14 +5,15 @@ import BaseLayout, { type Meta } from "./BaseLayout.astro";
 
 type Props = {
   meta?: Meta;
+  enableGrid?: boolean;
 };
 
-const { meta } = Astro.props;
+const { meta, enableGrid = false } = Astro.props;
 ---
 
 <BaseLayout {meta}>
   <body class="bg-bg-primary text-text-primary">
-    <Header />
+    <Header {enableGrid} />
     <main class="max-w-7xl mx-auto">
       <slot />
     </main>

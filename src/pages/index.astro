@@ -12,7 +12,7 @@ import aboutImage from "../images/blog-placeholder-about.jpg";
 import RecentBlog from "@/components/index/RecentBlog.astro";
 ---
 
-<IndexLayout>
+<IndexLayout enableGrid={true}>
   <div class="landing mt-24 space-y-16">
     <header class="flex flex-col gap-12 items-center mx-8">
       <div class="flex flex-col gap-6 text-center items-center">
@@ -29,7 +29,7 @@ import RecentBlog from "@/components/index/RecentBlog.astro";
           คอมพิวเตอร์
         </p>
       </div>
-      <class class="cta space-x-3">
+      <div class="cta space-x-3">
         <Button
           className="font-baijamjuree font-semibold bg-button-secondary-bg h-fit w-fit border border-button-secondary-border text-button-secondary-fg  px-[22px] py-4 text-lg rounded-[8px]"
           >Demo</Button
@@ -46,7 +46,7 @@ import RecentBlog from "@/components/index/RecentBlog.astro";
           ></a
         >
         <section></section>
-      </class>
+      </div>
     </header>
     <div class="flex justify-center">
       <Image
