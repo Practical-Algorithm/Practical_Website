@@ -6,7 +6,7 @@ interface Props {
   title: string;
   author: string;
   slug: string;
-  pubDate: string;
+  pubDate: Date;
   description: string;
   tags: string[];
   imageSource: string;
@@ -27,15 +27,23 @@ const {
 } = Astro.props;
 ---
 
-<a href={slug}>
-  <article class:list={[{ "most-recent-blog": mostRecent }]}>
+<a href={`blog/${slug}`} class:list={[{ "most-recent-blog": mostRecent }]}>
+  <article>
     <div class="image rounded-2xl">
       <Image src={imageSource} height={2000} width={3200} alt={imageAlt} />
     </div>
 
     <div class="post-content">
       <div class="heading">
-        <div class="meta">{author} • {pubDate}</div>
+        <div class="meta">
+          {author} • {
+            pubDate.toLocaleDateString("en-GB", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })
+          }
+        </div>
         <div class="title">
           <h5>{title}</h5>
         </div>
@@ -63,7 +71,11 @@ const {
     @apply xl:flex-row;
   }
   .most-recent-blog {
-    @apply row-span-2 flex-col;
+    @apply row-span-2;
+  }
+
+  .most-recent-blog article {
+    @apply flex-col;
   }
 
   .tags {
@@ -75,7 +87,7 @@ const {
   }
 
   .most-recent-blog .article-desc {
-    @apply line-clamp-3;
+    @apply xl:line-clamp-3;
   }
 
   .meta {
@@ -84,6 +96,7 @@ const {
   .title {
     @apply flex w-full justify-between items-center;
     @apply text-display-xs font-semibold text-text-primary;
+    @apply line-clamp-2;
   }
 
   .heading {
@@ -96,7 +109,7 @@ const {
 
   .image {
     @apply w-full xl:w-80;
-    height: 200px;
+    max-height: 200px;
     overflow: hidden;
   }
 

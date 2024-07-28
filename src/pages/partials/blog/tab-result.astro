@@ -17,17 +17,25 @@ const data = filteredBlogs.map(getBlogData);
 ---
 
 {
-  data.map((blogData) => (
-    <BlogCard
-      title={blogData.title}
-      author={blogData.author}
-      slug={`/blog/${blogData.slug}`}
-      pubDate={blogData.pubDate.toLocaleDateString()}
-      description={blogData.description}
-      tags={blogData.tags}
-      imageSource={blogData.heroImage!}
-      imageAlt={blogData.heroImageAlt!}
-      mostRecent={false}
-    />
-  ))
+  data.length !== 0 ? (
+    data.map((blogData) => (
+      <BlogCard
+        title={blogData.title}
+        author={blogData.author}
+        slug={blogData.slug}
+        pubDate={blogData.pubDate}
+        description={blogData.description}
+        tags={blogData.tags}
+        imageSource={blogData.heroImage!}
+        imageAlt={blogData.heroImageAlt!}
+        mostRecent={false}
+      />
+    ))
+  ) : (
+    <div class="grid content-center">
+      <p class="text-center text-lg font-semibold text-text-secondary">
+        No posts found
+      </p>
+    </div>
+  )
 }

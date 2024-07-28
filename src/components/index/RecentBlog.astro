@@ -2,42 +2,33 @@
 import { Button } from "@/components/ui/button";
 import { Icon } from "astro-icon/components";
 import BlogCard from "../blog/BlogCard.astro";
+
+import { getCollection } from "astro:content";
+import { formatBlogPost, getBlogData } from "@/lib/utils";
+
+const allBlogs = await getCollection("blog");
+const filteredBlogs = formatBlogPost(allBlogs, 3);
+const data = filteredBlogs.map(getBlogData);
 ---
 
 <section class="recent-blog">
   <header><h2>Recent blog posts</h2></header>
   <div class="contents">
-    <!-- Recent post -->
-    <BlogCard
-      title="Migrating to Linear 101"
-      author="Olivia Rhye"
-      pubDate="20 Jan 2024"
-      description="How do you create compelling presentations that wow your colleagues and impress your managers? lorem ipsum dolor sit ametha ths wcro npcro nedc will you be able to do it?"
-      tags={["Design", "Research", "Development"]}
-      imageSource="/images/post-image1.png"
-      imageAlt="About me Image"
-      mostRecent={true}
-    />
-    <BlogCard
-      title="Migrating to Linear 101"
-      author="Olivia Rhye"
-      pubDate="20 Jan 2024"
-      description="How do you create compelling presentations that wow your colleagues and impress your managers?"
-      tags={["Design", "Research", "Development"]}
-      imageSource="/images/post-image1.png"
-      imageAlt="About me Image"
-      mostRecent={false}
-    />
-    <BlogCard
-      title="Migrating to Linear 101"
-      author="Olivia Rhye"
-      pubDate="20 Jan 2024"
-      description="How do you create compelling presentations that wow your colleagues and impress your managers?"
-      tags={["Design", "Research", "Development"]}
-      imageSource="/images/post-image1.png"
-      imageAlt="About me Image"
-      mostRecent={false}
-    />
+    {
+      data.map((blogData, index) => (
+        <BlogCard
+          title={blogData.title}
+          author={blogData.author}
+          slug={blogData.slug}
+          pubDate={blogData.pubDate}
+          description={blogData.description}
+          tags={blogData.tags}
+          imageSource={blogData.heroImage!}
+          imageAlt={blogData.heroImageAlt!}
+          mostRecent={index === 0}
+        />
+      ))
+    }
   </div>
   <Button size="link_lg" variant="link_color" className="mx-auto"
     >Read all blogs <Icon name="untitled/arrow-right" /></Button

@@ -4,10 +4,11 @@
 export const SITE_TITLE = "Practical Algorithms";
 export const SITE_DESCRIPTION = "Welcome!";
 export const TAGS = [
-  "algorithms",
-  "data structures",
+  "Algorithms",
+  "Data structures",
   "Posn",
   "Pre-Posn",
+  "Math",
   "TOI",
   "Tech",
   "Story",

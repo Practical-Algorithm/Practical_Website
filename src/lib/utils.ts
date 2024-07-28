@@ -12,12 +12,12 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatBlogPost(
   blogs: BlogPostType[],
+  limit: number | undefined = undefined,
   sortCriteria: (a: BlogPostType, b: BlogPostType) => number 
   = (a, b) =>
     new Date(b.data.pubDate) - new Date(a.data.pubDate),
   filterOutDrafts = true,
   filterOutFuturePosts = true,
-  limit = undefined
 ) {
   
   return blogs.filter((blog) => {

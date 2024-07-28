@@ -1,8 +1,8 @@
 ---
-title: "Third post"
-description: "Lorem ipsum dolor sit amet"
+title: "วิเคราะห์โจทย์ สอวน. ข้อ พิดสสดาดาาด (Phitsanulok)"
+description: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra."
 pubDate: "Jul 22 2022"
-heroImage: "/blog-placeholder-2.jpg"
+heroImage: "/images/post-image3.png"
 
 author: "John Doe"
 heroImageAlt: "A placeholder image"

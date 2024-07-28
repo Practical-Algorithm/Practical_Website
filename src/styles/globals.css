@@ -578,4 +578,14 @@
   .custom-select select {
     @apply appearance-none w-full bg-bg-primary border border-border-primary text-text-primary py-2.5 px-3.5 rounded-lg leading-tight focus:outline-none;
   }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
