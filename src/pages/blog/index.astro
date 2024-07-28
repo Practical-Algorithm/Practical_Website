@@ -1,37 +1,18 @@
 ---
 import BlogCard from "@/components/blog/BlogCard.astro";
 import IndexLayout from "@/layouts/IndexLayout.astro";
+import { formatBlogPost, getBlogData } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
-import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
-import { fade } from "astro:transitions";
+import { type Tag, TAGS } from "@/consts";
 
-const allTags: string[] = [
-  "View all",
-  "Posn",
-  "Pre-Posn",
-  "TOI",
-  "Latest",
-  "Popular",
-  "Opinion",
-  "Tech",
-];
+const allTags: Array<Tag | "View All"> = ["View All", ...TAGS];
 
 const allBlogs = await getCollection("blog");
 
-const data = allBlogs.map((blog) => {
-  return {
-    title: blog.data.title,
-    description: blog.data.description,
-    slug: blog.slug,
-    author: blog.data.author,
-    pubDate: blog.data.pubDate,
-    tags: blog.data.tags,
-    heroImage: blog.data.heroImage,
-    heroImageAlt: blog.data.heroImageAlt,
-  };
-});
-console.log(data);
+const filteredBlogs = formatBlogPost(allBlogs);
+
+const data = filteredBlogs.map(getBlogData);
 ---
 
 <IndexLayout>
@@ -63,6 +44,8 @@ console.log(data);
                 name="tag"
                 id={`tag-${tagName}`}
                 class="tab_button"
+                aria-details={tagName}
+                checked={tagName === "View All"}
                 hx-get={`/partials/blog/tab-result?tag=${tagName}`}
                 hx-trigger="click"
                 hx-target="#blog-result"
@@ -76,7 +59,7 @@ console.log(data);
       <div class="custom-select w-80 text-md font-medium relative">
         <select>
           <option>Latest</option>
-          <option>Popular</option>
+          <!-- <option>Popular</option>     -->
         </select>
         <Icon
           name="untitled/chevron-down"
@@ -106,7 +89,7 @@ console.log(data);
 
 <style>
   .tab_button {
-    @apply hidden;
+    @apply sr-only;
   }
 
   .tab_button + label {

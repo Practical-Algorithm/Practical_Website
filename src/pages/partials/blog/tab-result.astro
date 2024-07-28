@@ -1,10 +1,33 @@
 ---
 export const partial = true;
+import BlogCard from "@/components/blog/BlogCard.astro";
+import { formatBlogPost, getBlogData } from "@/lib/utils";
+import { type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 const query = Astro.url.searchParams.get("tag");
+
+let allBlogs: CollectionEntry<"blog">[] = [];
+allBlogs = await getCollection(
+  "blog",
+  ({ data }) => !query || query === "View All" || data.tags.includes(query)
+);
+const filteredBlogs = formatBlogPost(allBlogs);
+const data = filteredBlogs.map(getBlogData);
 ---
 
-<div>
-  <h2>Result</h2>
-  <p>Result: {query}</p>
-</div>
+{
+  data.map((blogData) => (
+    <BlogCard
+      title={blogData.title}
+      author={blogData.author}
+      slug={`/blog/${blogData.slug}`}
+      pubDate={blogData.pubDate.toLocaleDateString()}
+      description={blogData.description}
+      tags={blogData.tags}
+      imageSource={blogData.heroImage!}
+      imageAlt={blogData.heroImageAlt!}
+      mostRecent={false}
+    />
+  ))
+}

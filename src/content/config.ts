@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { schemaForType } from "@/lib/utils";
 
 const blog = defineCollection({
   type: "content",
@@ -13,6 +14,8 @@ const blog = defineCollection({
     heroImage: z.string().optional(),
     heroImageAlt: z.string().optional(),
     tags: z.array(z.string()),
+
+    draft: z.boolean().optional().default(false),
   }),
 });
 
