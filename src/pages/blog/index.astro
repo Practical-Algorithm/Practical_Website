@@ -23,7 +23,7 @@ const data = filteredBlogs.map(getBlogData);
           Our Blog · เรื่องเล่าชาวอัลกอ
         </h2>
         <h1
-          class="text-display-md lg:text-display-lg break-words font-sans font-semibold"
+          class="text-display-md lg:text-display-lg w-[400px] md:w-fit font-sans font-semibold"
         >
           พบกับเนื้อหาล่าสุดจาก เรื่องเล่าชาวอัลกอ
         </h1>
@@ -41,6 +41,8 @@ const data = filteredBlogs.map(getBlogData);
     >
       <form
         autocomplete="off"
+        data-astro-reload
+        id="tag-filter"
         class="flex max-w-full gap-4 grow border-b border-solid border-border-secondary overflow-x-auto no-scrollbar"
       >
         {

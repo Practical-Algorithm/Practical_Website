@@ -21,8 +21,6 @@ export function formatBlogPost(
 ) {
   
   return blogs.filter((blog) => {
-
-    console.log('blog', blog.data.pubDate, new Date(blog.data.pubDate))
     if (filterOutDrafts && blog.data.draft) {
       return false
     }
