@@ -16,3 +16,12 @@ export const TAGS = [
 ] as const;
 
 export type Tag = typeof TAGS[number];
+
+export const StaticTexts = {
+  NAVBAR: {
+    HOME: "หน้าแรก",
+    BLOG: "บทความ",
+    QUIZ: "ควิซ",
+    LEARN: "เริ่มเรียน",
+  },
+};

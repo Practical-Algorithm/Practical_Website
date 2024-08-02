@@ -1,7 +1,7 @@
 ---
-import Navbar from "./Navbar";
 import { SITE_TITLE } from "../../consts";
 import LandingGrid from "./LandingGrid.astro";
+import Navbar from "./Navbar";
 
 type Props = {
   enableGrid?: boolean;
@@ -14,7 +14,7 @@ const { enableGrid = false } = Astro.props;
   {enableGrid && <LandingGrid />}
   <nav>
     <h2 class="text-xl font-semibold"><a href="/">{SITE_TITLE}</a></h2>
-    <Navbar data={[]} client:load />
+    <Navbar client:idle />
   </nav>
 </header>
 <style>
