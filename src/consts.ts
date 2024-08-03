@@ -23,5 +23,6 @@ export const StaticTexts = {
     BLOG: "บทความ",
     QUIZ: "ควิซ",
     LEARN: "เริ่มเรียน",
+    ABOUT: "เกี่ยวกับเรา",
   },
 };

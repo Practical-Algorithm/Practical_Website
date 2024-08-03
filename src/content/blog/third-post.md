@@ -9,12 +9,55 @@ heroImageAlt: "A placeholder image"
 tags: ["first", "post"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+## วิเคราะห์โจทย์ สอวน. ข้อ (Phitsanulok)
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+จริงๆโจทย์ข้อนี้ถ้ามองแบบรีบๆหน่อย ก็คงตอบว่า 1 หน่วยไปแล้ว เพราะดูจะให้น้ำมาเยอะดี ดูเหมือนจะเยอะพอที่จะใส่แก้วแถวที่ 5 เต็มได้ เพราะตั้งแต่แถวแรกถึงแถวที่ 5 มีแก้วน้ำรวมกันแค่ 15 แก้ว
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+แปลว่าใช้น้ำ 15 หน่วยก็ได้?
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+แต่พอทดๆออกมาแล้วแก้วสุดท้าย(แก้วที่ 5) ของแถวที่ 5 มันมีน้ำไม่ถึงอ่ะนะ เพราะปัจจัยอื่นๆเช่น แก้วตรงกลางจะได้น้ำมากกว่าแก้วที่อยู่ริมของแถว
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+จากที่โจทย์ให้มาเราได้ว่า เมื่อแก้วเต็มแล้ว น้ำจะไหลลงแก้วสองอันด้านล่างในปริมาณเท่าๆกัน
+
+![น้ำจะไหลลงแก้วสองอันด้านล่างในปริมาณเท่าๆกัน](/images/Frame-438.png)
+
+แต่ถ้าเราลองเทไปเรื่อยๆ จะเจอว่าในแถวถัดๆไป แก้วตรงกลางจะเต็มเร็วกว่า เพราะหลังจากที่แถวที่สองเต็มแล้ว แก้วตรงกลางของแถวที่ 3 จะได้น้ำมาจากทั้งสองแก้วในแถวที่ 2
+
+ซึ่งถ้าเราลอง simulate การเทน้ำไปเรื่อยๆทีละ 1 หน่วย ก็จะได้ประมาณนี้
+
+![น้ำจะไหลลงแก้วสองอันด้านล่างในปริมาณเท่าๆกัน](/images/Frame-439.png)
+
+จากการสังเกตในหน้าที่แล้วจะเห็นว่า
+
+- แก้วในแถวที่ 1 จะถูกเติมเต็มทั้งหมดโดยใช้น้ำ 1 หน่วย
+- แก้วในแถวที่ 2 จะถูกเติมเต็มทั้งหมดโดยใช้น้ำ 3 หน่วย
+
+จะเห็นได้ว่าแก้วริมสุดทั้งสองฝั่งเป็นแก้วที่เต็มช้าที่สุด เพราะจะได้น้ำจากชั้นก่อนหน้าแค่แก้วเดียว
+และน้ำที่ได้ยังต้องไปแบ่งครึ่งกับที่ไหลไปเข้าแก้วอีกฝั่งอีก
+
+### การคำนวณ
+
+จากการสังเกตแล้วจะเห็นว่า จำนวนน้ำที่ใช้ในแถวที่ $i$ จะเท่ากับ $i$ บวกกับจำนวนน้ำที่ใช้ในแถวที่ $i-1$
+
+## โค้ด
+
+### การคำนวณ
+
+จากการสังเกตแล้วจะเห็นว่า จำนวนน้ำที่ใช้ในแถวที่ $i$ จะเท่ากับ $i$ บวกกับจำนวนน้ำที่ใช้ในแถวที่ $i-1$
+
+```js
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    let mid = Math.floor(left + (right - left) / 2);
+
+    if (arr[mid] === target) return mid;
+    else if (arr[mid] < target) left = mid + 1;
+    else right = mid - 1;
+  }
+
+  return null;
+}
+```

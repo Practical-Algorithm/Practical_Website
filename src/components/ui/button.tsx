@@ -9,9 +9,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        link_color: "text-button-tertiary-color-fg fill-button-tertiary-color-fg"
+        link_color: "text-button-tertiary-color-fg fill-button-tertiary-color-fg",
+        secondary: "text-button-secondary-fg bg-button-secondary-color-bg border  border-button-secondary-border hover:bg-button-secondary-color-bg_hover",
       },
       size: {
+        sm: "text-sm font-semibold py-2.5 px-[14px] gap-x-2",
         link_lg: "text-md font-semibold p-0 gap-x-2"
       },
     },

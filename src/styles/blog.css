@@ -1,0 +1,34 @@
+h2 {
+  @apply text-display-sm font-semibold;
+  @apply mb-5;
+}
+
+h2:not(:first-child) {
+  @apply mt-10;
+}
+
+h3 {
+  @apply text-display-xs font-semibold;
+  @apply mb-5 mt-10;
+}
+
+p {
+  @apply text-text-tertiary text-xl font-baijamjuree;
+  @apply tracking-[0.16px];
+  @apply my-7;
+}
+
+img {
+  @apply my-12;
+}
+
+#content ul {
+  @apply list-disc pl-8;
+  @apply my-6;
+  @apply text-text-tertiary text-xl font-baijamjuree;
+  @apply leading-8;
+}
+
+#content li {
+  @apply font-baijamjuree;
+}

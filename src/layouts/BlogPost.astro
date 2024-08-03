@@ -2,10 +2,17 @@
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/utils/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
+import Header from "@/components/index/Header.astro";
+import Footer from "@/components/index/Footer.astro";
+import type { MarkdownHeading } from "astro";
+import TOC from "@/components/blog/TOC.astro";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & {
+  headings: MarkdownHeading[];
+};
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, headings } =
+  Astro.props;
 ---
 
 <BaseLayout
@@ -14,65 +21,32 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     description,
   }}
 >
-  <article>
-    <div class="hero-image">
-      {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-    </div>
-    <div class="prose">
-      <div class="title">
-        <div class="date">
-          <FormattedDate date={pubDate} />
-          {
-            updatedDate && (
-              <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-              </div>
-            )
-          }
+  <body class="bg-bg-primary text-text-primary">
+    <Header />
+    <article>
+      <header>Dummy header</header>
+      <main class="flex">
+        <TOC headings={headings} />
+        <div id="content">
+          <slot />
         </div>
-        <h1>{title}</h1>
-        <hr />
-      </div>
-      <slot />
-    </div>
-  </article>
+      </main>
+    </article>
+    <Footer />
+  </body>
 </BaseLayout>
 <style>
+  header {
+    height: 300px;
+    @apply bg-bg-primary;
+    @apply pb-16 pt-24;
+  }
+
+  article {
+    @apply mx-auto max-w-screen-xl px-8;
+  }
+
   main {
-    width: calc(100% - 2em);
-    max-width: 100%;
-    margin: 0;
-  }
-  .hero-image {
-    width: 100%;
-  }
-  .hero-image img {
-    display: block;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: var(--box-shadow);
-  }
-  .prose {
-    width: 720px;
-    max-width: calc(100% - 2em);
-    margin: auto;
-    padding: 1em;
-    color: rgb(var(--gray-dark));
-  }
-  .title {
-    margin-bottom: 1em;
-    padding: 1em 0;
-    text-align: center;
-    line-height: 1;
-  }
-  .title h1 {
-    margin: 0 0 0.5em 0;
-  }
-  .date {
-    margin-bottom: 0.5em;
-    color: rgb(var(--gray));
-  }
-  .last-updated-on {
-    font-style: italic;
+    @apply flex gap-16;
   }
 </style>

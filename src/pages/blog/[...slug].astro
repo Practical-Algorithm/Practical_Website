@@ -2,6 +2,7 @@
 // import { type CollectionEntry, getCollection } from "astro:content";
 import { getEntry } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
+import "@/styles/blog.css";
 
 // export async function getStaticPaths() {
 //   const posts = await getCollection("blog");
@@ -27,9 +28,9 @@ if (post === undefined) {
   return Astro.redirect("/404");
 }
 
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} {headings}>
   <Content />
 </BlogPost>

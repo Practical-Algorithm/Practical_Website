@@ -14,9 +14,12 @@ const isAnswered = answerIndex !== undefined;
 ---
 
 {
-  isAnswered ? (
-    <Explanation {answerIndex} quizEntry={quizEntry} />
-  ) : (
-    <ChoicesForm client:load slug={slug} quizEntry={quizEntry} />
+  (
+    // isAnswered ? (
+    //   <Explanation {answerIndex} quizEntry={quizEntry} />
+    // ) : (
+    //   <ChoicesForm client:load slug={slug} quizEntry={quizEntry} />
+    // )
+    <Explanation answerIndex={1} quizEntry={quizEntry} />
   )
 }
