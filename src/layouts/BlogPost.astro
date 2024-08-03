@@ -25,7 +25,7 @@ const { title, description, pubDate, updatedDate, heroImage, headings } =
     <Header />
     <article>
       <header>Dummy header</header>
-      <main class="flex">
+      <main class="flex lg:flex-row flex-col">
         <TOC headings={headings} />
         <div id="content">
           <slot />
