@@ -57,3 +57,30 @@ export function getBlogData(blog: BlogPostType) {
     heroImageAlt: blog.data.heroImageAlt,
   };
 }
+
+export function formatDateTime(date: string | Date) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
+// Ref: https://dev.to/michaelburrows/calculate-the-estimated-reading-time-of-an-article-using-javascript-2k9l
+export function calculateReadingTime(text: string) {
+  const averageWPM = 225;
+
+  const words = text.trim().split(/\s+/);
+
+  const adjustedText = text.replace(/(.)\1+/g, '$1');
+
+  const adjustedSentences = adjustedText.replace(/([.!?])\s*\1+/g, '$1');
+
+  const adjustedWords = adjustedSentences.trim().split(/\s+/);
+  const adjustedWordCount = adjustedWords.length;
+
+  const adjustedTime = adjustedWordCount / averageWPM;
+  const formattedAdjustedTime = adjustedTime > 1 ? Math.round(adjustedTime) + " min" : "Less than 1 min";
+
+  return formattedAdjustedTime;
+}

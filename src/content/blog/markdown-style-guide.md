@@ -5,6 +5,8 @@ pubDate: "Jul 01 2022"
 heroImage: "/blog-placeholder-1.jpg"
 
 author: "John Doe"
+authorImage: "/images/PracticalAlgo_profile.jpg"
+authorBio: "Software Engineer"
 heroImageAlt: "A placeholder image"
 tags: ["first", "post"]
 ---

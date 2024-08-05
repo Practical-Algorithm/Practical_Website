@@ -11,10 +11,12 @@ import BlogHeader from "@/components/blog/BlogHeader.astro";
 
 type Props = CollectionEntry<"blog">["data"] & {
   headings: MarkdownHeading[];
+  minRead: string;
 };
 
-const { title, description, pubDate, updatedDate, heroImage, headings } =
-  Astro.props;
+const { title, description, headings, minRead } = Astro.props;
+
+const content = Astro.props;
 ---
 
 <BaseLayout
@@ -26,7 +28,7 @@ const { title, description, pubDate, updatedDate, heroImage, headings } =
   <body class="bg-bg-primary text-text-primary">
     <Header />
     <article>
-      <BlogHeader />
+      <BlogHeader {content} {minRead} />
       <main class="flex lg:flex-row flex-col max-w-screen-lg">
         <aside
           class="lg:sticky lg:top-1 z-10 lg:basis-60 shrink-0 h-fit flex flex-col items-stretch gap-4"

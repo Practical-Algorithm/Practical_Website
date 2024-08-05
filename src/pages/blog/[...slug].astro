@@ -2,6 +2,7 @@
 // import { type CollectionEntry, getCollection } from "astro:content";
 import { getEntry } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
+import { calculateReadingTime } from "@/lib/utils";
 import "@/styles/blog.css";
 
 // export async function getStaticPaths() {
@@ -29,8 +30,9 @@ if (post === undefined) {
 }
 
 const { Content, headings } = await post.render();
+const minRead = calculateReadingTime(post.body);
 ---
 
-<BlogPost {...post.data} {headings}>
+<BlogPost {...post.data} {headings} {minRead}>
   <Content />
 </BlogPost>

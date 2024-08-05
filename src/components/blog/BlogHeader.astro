@@ -1,6 +1,25 @@
 ---
 import { Image } from "astro:assets";
 import PillBadge from "../ui/PillBadge.astro";
+import type { CollectionEntry } from "astro:content";
+import { formatDateTime } from "@/lib/utils";
+
+type Props = {
+  content: CollectionEntry<"blog">["data"];
+  minRead: string;
+};
+
+const { content, minRead } = Astro.props;
+const {
+  title,
+  pubDate,
+  description,
+  heroImage,
+  author,
+  authorImage,
+  authorBio,
+  tags,
+} = content;
 ---
 
 <header class="my-16 max-w-screen-lg mx-4 md:mx-auto lg:px-20">
@@ -8,26 +27,24 @@ import PillBadge from "../ui/PillBadge.astro";
     <div
       class="text-text-brand-secondary font-baijamjuree font-semibold text-sm md:text-md"
     >
-      3 Jan 2024 . 10 min read
+      {formatDateTime(pubDate)} • {minRead}
     </div>
     <h1
       class="text-display-md md:text-display-lg font-bold font-sans text-text-primary"
     >
-      ทำโจทย์ยังไงให้ไม่เบื่อ Part 1 - จากพี่ต้นสัก
+      {title}
     </h1>
   </div>
   <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
     <div class="pt-8 lg:pb-8 flex flex-col gap-8 lg:gap-12 grow">
       <p class="my-0">
-        เคยไหมเวลาไปนั่งกินอาหารที่ร้าน แล้วรู้สึกว่าอาหารเรามันไม่มาสักที
-        เผลอๆบางทีโต๊ะข้างๆที่มาหลังเราดันได้อาหารก่อนเราอีก
-        แล้วกว่าจะได้กินโต๊ะข้างๆก็ออกกันไปละ
+        {description}
       </p>
       <div class="flex gap-4">
         <div>
           <Image
             class="rounded-full my-0"
-            src="/images/PracticalAlgo_profile.jpg"
+            src={authorImage}
             alt="Avatar"
             width={56}
             height={56}
@@ -35,21 +52,25 @@ import PillBadge from "../ui/PillBadge.astro";
         </div>
         <div>
           <div class="text-text-primary text-lg font-semibold">
-            Practical Algorithm
+            {author}
           </div>
-          <div class="text-text-tertiary text-md">Software Engineer</div>
+          <div class="text-text-tertiary text-md">{authorBio}</div>
         </div>
       </div>
-      <div class="flex gap-2">
-        <PillBadge size="md" color="brand">POSN</PillBadge>
-        <PillBadge size="md" color="brand">Algorithm</PillBadge>
-        <PillBadge size="md" color="brand">Opinion</PillBadge>
+      <div class="flex gap-2 flex-wrap">
+        {
+          tags.map((tag) => (
+            <PillBadge size="md" color="brand">
+              {tag}
+            </PillBadge>
+          ))
+        }
       </div>
     </div>
     <div class="w-fit shrink-0 self-center">
       <Image
         class="my-0"
-        src="/images/blog3.png"
+        src={heroImage}
         alt="Hero image"
         width={400}
         height={300}

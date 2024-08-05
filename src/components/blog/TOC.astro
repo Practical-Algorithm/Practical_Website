@@ -33,6 +33,7 @@ const groupedHeadings = headings.filter((heading) => heading.depth === 2);
   </ul>
 </div>
 <script>
+  // Ref: https://gist.github.com/maciejpedzich/000da5c6b3a91290d49a91c9fe940ca3
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
