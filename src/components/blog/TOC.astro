@@ -1,7 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro";
-import { Button } from "../ui/button";
-import { Icon } from "astro-icon/components";
+import ShareButton from "./ShareButton.astro";
 
 type Props = {
   headings: MarkdownHeading[];
@@ -12,65 +11,27 @@ type NestedHeading = MarkdownHeading & {
 };
 const { headings } = Astro.props;
 
-const groupedHeadings = headings.reduce((array, heading) => {
-  if (heading.depth === 2)
-    array.push({
-      ...heading,
-      subheadings: [],
-    });
-  else if (heading.depth === 3)
-    array[array.length - 1].subheadings.push(heading);
-
-  return array;
-}, [] as NestedHeading[]);
+const groupedHeadings = headings.filter((heading) => heading.depth === 2);
 ---
 
-<aside
-  class="lg:sticky lg:top-1 z-10 basis-60 shrink-0 h-fit flex flex-col items-stretch gap-4"
-  aria-label="Table Of Contents"
->
-  <div class="divider"></div>
-  <div class="space-y-4">
-    <div class="text-md font-semibold text-text-brand-tertiary">
-      Table of Contents
-    </div>
-    <ul
-      class="space-y-3 font-semibold text-md font-baijamjuree text-button-tertiary-fg"
-    >
-      {
-        groupedHeadings.map((heading) => (
-          <li class="space-y-3">
-            <a href={`#${heading.slug}`} class="font-baijamjuree">
-              {heading.text}
-            </a>
-            <ul class="ml-4 space-y-2es">
-              {heading.subheadings.map((subheading) => (
-                <li>
-                  <a href={`#${subheading.slug}`} class="font-baijamjuree">
-                    {subheading.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))
-      }
-    </ul>
+<div class="space-y-4">
+  <div class="text-md font-semibold text-text-brand-tertiary">
+    Table of Contents
   </div>
-  <div class="divider"></div>
-
-  <div class="links flex flex-col gap-2">
-    <div class="text-md font-semibold text-text-tertiary">Share this post</div>
-    <ul>
-      <li>
-        <Button variant="secondary" size="sm">
-          <Icon name="untitled/copy-01" width={20} height={20} />
-          Copy link</Button
-        >
-      </li>
-    </ul>
-  </div>
-</aside>
+  <ul
+    class="space-y-3 font-semibold text-md font-baijamjuree text-button-tertiary-fg"
+  >
+    {
+      groupedHeadings.map((heading) => (
+        <li class="space-y-3">
+          <a href={`#${heading.slug}`} class="font-baijamjuree">
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
 
 <style>
   .divider {

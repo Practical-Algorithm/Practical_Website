@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+import { Button } from "../ui/button";
+---
+
+<div class="links flex flex-col gap-2">
+  <div class="text-md font-semibold text-text-tertiary">
+    แชร์หน่อยก๊าบ &nbsp;{"\\_O<"}
+  </div>
+  <ul>
+    <li>
+      <Button variant="secondary" size="sm">
+        <Icon name="untitled/copy-01" width={20} height={20} />
+        คัดลอกลิงก์
+      </Button>
+    </li>
+  </ul>
+</div>

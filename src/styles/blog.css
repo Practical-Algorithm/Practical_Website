@@ -13,7 +13,7 @@ h3 {
 }
 
 p {
-  @apply text-text-tertiary text-xl font-baijamjuree;
+  @apply text-text-tertiary text-lg font-baijamjuree;
   @apply tracking-[0.16px];
   @apply my-7;
 }
@@ -25,7 +25,7 @@ img {
 #content ul {
   @apply list-disc pl-8;
   @apply my-6;
-  @apply text-text-tertiary text-xl font-baijamjuree;
+  @apply text-text-tertiary text-lg font-baijamjuree;
   @apply leading-8;
 }
 

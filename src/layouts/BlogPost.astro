@@ -6,6 +6,7 @@ import Header from "@/components/index/Header.astro";
 import Footer from "@/components/index/Footer.astro";
 import type { MarkdownHeading } from "astro";
 import TOC from "@/components/blog/TOC.astro";
+import ShareButton from "@/components/blog/ShareButton.astro";
 
 type Props = CollectionEntry<"blog">["data"] & {
   headings: MarkdownHeading[];
@@ -26,9 +27,23 @@ const { title, description, pubDate, updatedDate, heroImage, headings } =
     <article>
       <header>Dummy header</header>
       <main class="flex lg:flex-row flex-col">
-        <TOC headings={headings} />
+        <aside
+          class="lg:sticky lg:top-1 z-10 lg:basis-60 shrink-0 h-fit flex flex-col items-stretch gap-4"
+          aria-label="Table Of Contents"
+        >
+          <div class="divider"></div>
+          <TOC headings={headings} />
+          <div class="divider hidden lg:block"></div>
+          <div class="hidden lg:block">
+            <ShareButton />
+          </div>
+        </aside>
+
         <div id="content">
           <slot />
+        </div>
+        <div class="lg:hidden flex flex-col items-center text-center">
+          <ShareButton />
         </div>
       </main>
     </article>
@@ -48,5 +63,12 @@ const { title, description, pubDate, updatedDate, heroImage, headings } =
 
   main {
     @apply flex gap-16;
+  }
+
+  .divider {
+    height: 1px;
+    width: 100%;
+
+    @apply bg-border-secondary;
   }
 </style>
