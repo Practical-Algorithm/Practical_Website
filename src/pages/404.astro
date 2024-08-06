@@ -1,0 +1,98 @@
+---
+import IndexLayout from "@/layouts/IndexLayout.astro";
+import { Icon } from "astro-icon/components";
+
+const ctas = [
+  {
+    title: "Our blog",
+    icon: "book-closed",
+    description: "Read the latest posts on our blog.",
+    link: "/blog",
+    linkText: "View lastest posts",
+  },
+  {
+    title: "Our blog",
+    icon: "book-closed",
+    description: "Read the latest posts on our blog.",
+    link: "/blog",
+    linkText: "View lastest posts",
+  },
+  {
+    title: "Our blog",
+    icon: "book-closed",
+    description: "Read the latest posts on our blog.",
+    link: "/blog",
+    linkText: "View lastest posts",
+  },
+];
+---
+
+<IndexLayout>
+  <section class="max-w-screen-xl mx-auto px-8 my-16 md:my-24">
+    <div class="space-y-16 md:space-y-24">
+      <header
+        class="flex flex-col items-center gap-6 max-w-screen-md text-center mx-auto"
+      >
+        <div class="flex flex-col items-center gap-3">
+          <h2
+            class="text-md font-bold text-text-brand-secondary font-baijamjuree"
+          >
+            404 error
+          </h2>
+          <h1
+            class="text-display-md md:text-display-xl font-bold text-text-primary font-sans"
+          >
+            We lost this page
+          </h1>
+        </div>
+        <p class="text-lg md:text-xl font-baijamjuree text-text-tertiary">
+          We searched high and low, but couldn't find what you're looking for.
+          Let's find a better place for you to go.
+        </p>
+        <div
+          class="flex flex-col-reverse md:flex-row w-full items-stretch justify-center gap-3 md:mt-6"
+        >
+          <a
+            class="rounded-lg bg-button-secondary-bg hover:bg-button-secondary-bg_hover px-[18px] md:px-[22px] py-3 md:py-4 text-lg text-button-secondary-fg font-semibold"
+            >Back</a
+          >
+          <a
+            href="/"
+            class="rounded-lg bg-button-primary-bg hover:bg-button-primary-bg_hover px-[22px] py-4 text-lg text-button-primary-fg font-semibold"
+            >Home</a
+          >
+        </div>
+      </header>
+
+      <div
+        class="flex flex-col md:flex-row gap-4 md:gap-8 w-full justify-between"
+      >
+        {
+          ctas.map((cta) => (
+            <a
+              href={cta.link}
+              class="block space-y-5 md:basis-[280px] grow bg-bg-secondary hover:bg-bg-secondary_hover p-6"
+            >
+              <Icon name={`untitled/${cta.icon}`} class="w-6 h-6" />
+              <div class="space-y-2">
+                <div class="text-lg md:text-xl font-bold text-text-primary font-baijamjuree">
+                  {cta.title}
+                </div>
+                <span class="text-md text-text-tertiary font-baijamjuree">
+                  {cta.description}
+                </span>
+              </div>
+              <div class="text-md text-button-tertiary-fg hover:text-button-tertiary-fg_hover font-semibold flex items-center gap-2">
+                {cta.linkText}
+                <Icon
+                  name="untitled/arrow-right"
+                  class="inline-block w-5 h-5"
+                />
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</IndexLayout>
