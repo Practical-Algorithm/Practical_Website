@@ -26,3 +26,12 @@ export const StaticTexts = {
     ABOUT: "เกี่ยวกับเรา",
   },
 };
+
+export const Authors = {
+  Practical: {
+    name: "Practical Algorithm",
+    profile: "images/PracticalAlgo_profile.jpg",
+    profileAlt: "Practical Algorithm Profile",
+    bio: "Soft",
+  },
+};

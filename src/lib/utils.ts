@@ -1,39 +1,40 @@
 import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-import type { CollectionEntry } from "astro:content"
-import { z } from "zod"
+import { twMerge } from "tailwind-merge";
+import type { CollectionEntry } from "astro:content";
+import { z } from "zod";
+import { Authors } from "@/consts";
 
-type BlogPostType = CollectionEntry<"blog">
+type BlogPostType = CollectionEntry<"blog">;
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
-
 
 export function formatBlogPost(
   blogs: BlogPostType[],
   limit: number | undefined = undefined,
-  sortCriteria: (a: BlogPostType, b: BlogPostType) => number 
-  = (a, b) =>
+  sortCriteria: (a: BlogPostType, b: BlogPostType) => number = (a, b) =>
     new Date(b.data.pubDate) - new Date(a.data.pubDate),
   filterOutDrafts = true,
-  filterOutFuturePosts = true,
+  filterOutFuturePosts = true
 ) {
-  
-  return blogs.filter((blog) => {
-    if (filterOutDrafts && blog.data.draft) {
-      return false
-    }
-    if (filterOutFuturePosts && new Date(blog.data.pubDate) > new Date()) {
-      return false
-    }
-    return true
-  })
+  return blogs
+    .filter((blog) => {
+      if (filterOutDrafts && blog.data.draft) {
+        return false;
+      }
+      if (filterOutFuturePosts && new Date(blog.data.pubDate) > new Date()) {
+        return false;
+      }
+      return true;
+    })
     .sort(sortCriteria)
-    .slice(0, limit ?? blogs.length)
+    .slice(0, limit ?? blogs.length);
 }
 
-export const schemaForType = <T>() => <S extends z.ZodType<T, any, any>>(arg: S) => {
+export const schemaForType = <T>() => <S extends z.ZodType<T, any, any>>(
+  arg: S
+) => {
   return arg;
 };
 
@@ -72,15 +73,35 @@ export function calculateReadingTime(text: string) {
 
   const words = text.trim().split(/\s+/);
 
-  const adjustedText = text.replace(/(.)\1+/g, '$1');
+  const adjustedText = text.replace(/(.)\1+/g, "$1");
 
-  const adjustedSentences = adjustedText.replace(/([.!?])\s*\1+/g, '$1');
+  const adjustedSentences = adjustedText.replace(/([.!?])\s*\1+/g, "$1");
 
   const adjustedWords = adjustedSentences.trim().split(/\s+/);
   const adjustedWordCount = adjustedWords.length;
 
   const adjustedTime = adjustedWordCount / averageWPM;
-  const formattedAdjustedTime = adjustedTime > 1 ? Math.round(adjustedTime) + " min" : "Less than 1 min";
+  const formattedAdjustedTime =
+    adjustedTime > 1 ? Math.round(adjustedTime) + " min" : "Less than 1 min";
 
   return formattedAdjustedTime;
+}
+
+export function getAuthorProfile(name: string) {
+  try {
+    const author = Authors[name];
+    return {
+      name: author.name,
+      profile: author.profile,
+      profileAlt: author.profileAlt,
+      bio: author.bio,
+    };
+  } catch (e) {
+    return {
+      name: "Practical Algorithm",
+      profile: "/images/PracticalAlgo_profile.jpg",
+      profileAlt: "Practical Algorithm Profile",
+      bio: "Goo goo ga ga",
+    };
+  }
 }

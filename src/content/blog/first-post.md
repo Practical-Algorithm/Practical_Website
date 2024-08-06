@@ -1,13 +1,17 @@
 ---
 title: "วิเคราะห์โจทย์ สอวน. ข้อ พิดสสดาดาาด (Phitsanulok)"
 description: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra."
-pubDate: "Jul 08 2022"
-heroImage: "/images/post-image2.png"
 
 author: "John Doe"
-authorImage: "/images/PracticalAlgo_profile.jpg"
-authorBio: "Software Engineer"
+
+pubDate: "Jul 22 2022"
+
+heroImage: "/images/post-image2.png"
 heroImageAlt: "A placeholder image"
+
+coverImage: "/images/post-image2.png"
+coverImageAlt: "A placeholder image"
+
 tags: ["first", "post"]
 ---
 

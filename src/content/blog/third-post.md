@@ -1,14 +1,17 @@
 ---
-title: "วิเคราะห์โจทย์ สอวน. ข้อ พิดสสดาดาาด (Phitsanulok)"
-description: "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra."
-pubDate: "Jul 22 2022"
-heroImage: "/images/post-image3.png"
-
-author: "John Doe"
-authorImage: "/images/PracticalAlgo_profile.jpg"
-authorBio: "Software Engineer"
-heroImageAlt: "A placeholder image"
-tags: ["first", "post"]
+title: วิเคราะห์โจทย์ สอวน. ข้อ พิดสสดาดาาด (Phitsanulok)
+description: จริงๆโจทย์ข้อนี้ถ้ามองแบบรีบๆหน่อย ก็คงตอบว่า 1 หน่วยไปแล้ว เพราะดูจะให้น้ำมาเยอะดี ดูเหมือนจะเยอะพอที่จะใส่แก้วแถวที่ 5 เต็มได้ แต่มันมีอะไรมากกว่านั้น
+author: John Doe
+pubDate: Jul 22 2022
+heroImage: /images/post-image3.png
+heroImageAlt: A placeholder image
+coverImage: /images/post-image3.png
+coverImageAlt: A placeholder image
+tags:
+  - first
+  - post
+slug: วิเคราะห์โจทย์-สอวน-ข้อ-พิดสสดาดาาด-phitsanulok
+draft: false
 ---
 
 ## วิเคราะห์โจทย์ สอวน.

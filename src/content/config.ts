@@ -7,14 +7,17 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+
     author: z.string(),
-    authorImage: z.string(),
-    authorBio: z.string(),
     // Transform string to Date object
     pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
+
     heroImage: z.string(),
     heroImageAlt: z.string(),
+
+    coverImage: z.string(),
+    coverImageAlt: z.string(),
+
     tags: z.array(z.string()),
 
     draft: z.boolean().optional().default(false),

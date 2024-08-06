@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import PillBadge from "../ui/PillBadge.astro";
 import type { CollectionEntry } from "astro:content";
-import { formatDateTime } from "@/lib/utils";
+import { formatDateTime, getAuthorProfile } from "@/lib/utils";
 
 type Props = {
   content: CollectionEntry<"blog">["data"];
@@ -10,16 +10,15 @@ type Props = {
 };
 
 const { content, minRead } = Astro.props;
+const { title, pubDate, description, heroImage, author, tags } = content;
+
+const Author = getAuthorProfile(author);
 const {
-  title,
-  pubDate,
-  description,
-  heroImage,
-  author,
-  authorImage,
-  authorBio,
-  tags,
-} = content;
+  name: authorName,
+  profile: authorImage,
+  profileAlt: authorImageAlt,
+  bio: authorBio,
+} = Author;
 ---
 
 <header class="my-16 max-w-screen-lg mx-4 md:mx-auto lg:px-20">
@@ -45,14 +44,14 @@ const {
           <Image
             class="rounded-full my-0"
             src={authorImage}
-            alt="Avatar"
+            alt={authorImageAlt}
             width={56}
             height={56}
           />
         </div>
         <div>
           <div class="text-text-primary text-lg font-semibold">
-            {author}
+            {authorName}
           </div>
           <div class="text-text-tertiary text-md">{authorBio}</div>
         </div>
