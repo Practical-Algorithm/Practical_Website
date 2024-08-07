@@ -1,7 +1,14 @@
 ---
+import { Icon } from "astro-icon/components";
 import { SITE_TITLE } from "../../consts";
 import LandingGrid from "./LandingGrid.astro";
-import Navbar from "./Navbar";
+import {
+  Astronav,
+  MenuItems,
+  MenuIcon,
+  OpenIcon,
+  CloseIcon,
+} from "astro-navbar";
 
 type Props = {
   enableGrid?: boolean;
@@ -12,17 +19,56 @@ const { enableGrid = false } = Astro.props;
 
 <header>
   {enableGrid && <LandingGrid />}
-  <nav>
-    <a href="/" class="text-xl font-semibold">{SITE_TITLE}</a>
-    <Navbar client:idle />
-  </nav>
+  <div
+    class="main_nav max-w-screen-xl mx-auto py-4 px-8 flex justify-between items-center flex-wrap"
+  >
+    <Astronav>
+      <div class="flex w-full md:w-fit grow-0 justify-between items-center">
+        <a href="/" class="text-xl font-semibold">{SITE_TITLE}</a>
+        <div class="block md:hidden w-10 h-10 p-2">
+          <MenuIcon>
+            <OpenIcon>
+              <Icon name="untitled/menu-01" class="w-6 h-6 text-gray-800" />
+            </OpenIcon>
+            <CloseIcon>
+              <Icon name="untitled/x-close" class="w-6 h-6 text-gray-800" />
+            </CloseIcon>
+          </MenuIcon>
+        </div>
+      </div>
+      <MenuItems class="hidden md:flex">
+        <ul class="flex flex-col md:flex-row gap-3">
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </MenuItems>
+    </Astronav>
+  </div>
 </header>
+
 <style>
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: transparent;
+  ul li a {
+    @apply px-4 py-2 text-button-tertiary-fg hover:text-button-tertiary-fg_hover text-md font-semibold font-baijamjuree rounded-md cursor-pointer hover:bg-bg-primary_hover;
+  }
+
+  .main_nav:has(.astronav-close-icon:not(.hidden)) {
+    @apply fixed top-0 left-0 z-50;
+    height: 100lvh;
+    width: 100vw;
+    @apply flex-col justify-start;
+    @apply bg-bg-primary;
+  }
+
+  .main_nav:has(.astronav-close-icon:not(.hidden)) .astronav-items {
+    @apply grow;
+    @apply translate-y-0;
+  }
+
+  .main_nav:has(.astronav-close-icon:not(.hidden)) .astronav-items ul {
+    @apply h-full justify-center flex-col gap-6;
+  }
+
+  .main_nav:has(.astronav-close-icon:not(.hidden)) .astronav-items ul li a {
+    @apply text-lg;
   }
 </style>
