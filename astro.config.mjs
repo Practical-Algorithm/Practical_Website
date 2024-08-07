@@ -11,7 +11,7 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 // https://astro.build/config
 export default defineConfig({
   devToolbar: {
-    enabled: false,
+    enabled: true,
   },
   site: "https://example.com",
   integrations: [

@@ -16,29 +16,34 @@ import RecentBlog from "@/components/index/RecentBlog.astro";
   <div class="landing mt-24 space-y-16">
     <header class="flex flex-col gap-12 items-center mx-8">
       <div class="flex flex-col gap-6 text-center items-center">
-        <div class="flex flex-col gap-3 w-[804px]">
-          <h2 class="text-md font-semibold text-text-brand-secondary">
+        <div class="flex flex-col gap-3 md:w-[804px]">
+          <h2
+            class="text-sm lg:text-md font-semibold text-text-brand-secondary"
+          >
             Practical Algorithms · เรื่องเล่าชาวอัลกอ
           </h2>
-          <h1 class="text-display-2xl font-sans font-semibold">
+          <h1
+            class="text-display-md md:text-display-lg lg:text-display-xl max-w-[218px] sm:max-w-[400px] md:max-w-none lg:max-w-[650px] mx-auto font-sans font-semibold"
+          >
             ความรู้เนื้อหาอัลกอลิทึมแบบใช้ได้จริง
           </h1>
         </div>
-        <p class="text-xl text-text-tertiary font-baijamjuree">
+        <p class="text-md md:text-xl text-text-tertiary font-baijamjuree">
           เริ่มเรียนอัลกอลิทึมง่ายๆด้วยตัวเองกันเลย เขียนโดยพี่ๆค่าย สอวน.&สสวท.
           คอมพิวเตอร์
         </p>
       </div>
       <div class="cta space-x-3">
-        <Button
-          className="font-baijamjuree font-semibold bg-button-secondary-bg h-fit w-fit border border-button-secondary-border text-button-secondary-fg  px-[22px] py-4 text-lg rounded-[8px]"
-          >Demo</Button
+        <a
+          href="https://www.facebook.com/PracticalAlgorithms"
+          aria-label="Facebook Button"
         >
-        <Button
-          className="font-baijamjuree font-semibold bg-button-secondary-bg h-fit w-fit border border-button-secondary-border text-button-secondary-fg  px-[22px] py-4 text-lg rounded-[8px]"
-        >
-          <Icon name="bi/facebook" />
-        </Button>
+          <Button
+            className="font-baijamjuree font-semibold bg-button-secondary-bg h-fit w-fit border border-button-secondary-border text-button-secondary-fg  px-[22px] py-4 text-lg rounded-[8px]"
+          >
+            <Icon name="bi/facebook" />
+          </Button>
+        </a>
         <a href="/test">
           <Button
             className="font-baijamjuree bg-[rgba(var(--brand--600))] h-fit w-fit hover:bg-[rgba(var(--brand--700))] rounded-[8px] text-text-white px-[22px] py-4 font-semibold text-lg"
@@ -55,7 +60,7 @@ import RecentBlog from "@/components/index/RecentBlog.astro";
         width={574}
         height={369}
         src={landingDuck}
-        alt="Practical Algorithm Landing Image"
+        alt="Practical Algorithm's Duck Mascot Relaxing on a Laptop"
       />
     </div>
   </div>

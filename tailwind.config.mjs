@@ -9,6 +9,7 @@ export default {
       padding: "2rem",
     },
     screens: {
+      sm: "400px",
       md: "768px",
       lg: "1200px",
       xl: "1280px",
