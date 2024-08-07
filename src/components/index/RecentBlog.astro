@@ -12,7 +12,7 @@ const data = filteredBlogs.map(getBlogData);
 ---
 
 <section class="recent-blog">
-  <header><h2>Recent blog posts</h2></header>
+  <header><h2 class="font-sans">อัพเดตโพสต์ล่าสุด</h2></header>
   <div class="contents">
     {
       data.map((blogData, index) => (
@@ -31,9 +31,12 @@ const data = filteredBlogs.map(getBlogData);
     }
   </div>
 
-  <a href="/blog" class="mx-auto">
+  <a
+    href="/blog"
+    class="mx-auto py-2 px-4 bg-button-secondary-bg hover:bg-button-secondary-bg_hover rounded"
+  >
     <Button size="link_lg" variant="link_color">
-      Read all blogs <Icon name="untitled/arrow-right" />
+      บทความทั้งหมด <Icon name="untitled/arrow-right" />
     </Button>
   </a>
 </section>

@@ -35,27 +35,26 @@ import RecentBlog from "@/components/index/RecentBlog.astro";
           คอมพิวเตอร์
         </p>
       </div>
-      <div class="cta space-x-3">
+      <div class="flex justify-center gap-x-3 items-stretch">
         <a
           href="https://www.facebook.com/PracticalAlgorithms"
           aria-label="Facebook Button"
         >
           <Button
-            className="font-baijamjuree font-semibold bg-button-secondary-bg h-fit w-fit border border-button-secondary-border text-button-secondary-fg  px-[22px] py-4 text-lg rounded-[8px]"
+            className="font-baijamjuree font-semibold bg-button-secondary-bg h-full w-fit  border border-button-secondary-border text-button-secondary-fg  px-[22px] py-4 text-lg rounded-[8px] hover:text-[#1877F2]"
           >
-            <Icon name="bi/facebook" />
+            <Icon name="bi/facebook" width={24} height={24} />
           </Button>
         </a>
         <a href="/test">
           <Button
-            className="font-baijamjuree bg-[rgba(var(--brand--600))] h-fit w-fit hover:bg-[rgba(var(--brand--700))] rounded-[8px] text-text-white px-[22px] py-4 font-semibold text-lg"
+            className="font-baijamjuree bg-[rgba(var(--brand--600))] h-full w-fit  hover:bg-[rgba(var(--brand--700))] rounded-[8px] text-text-white px-[22px] py-4 font-semibold text-lg"
             >เริ่มเรียนกันเลย!</Button
           ></a
         >
-        <section></section>
       </div>
     </header>
-    <div class="flex justify-center">
+    <div class="flex justify-center px-4">
       <Image
         quality={50}
         format="webp"
@@ -68,22 +67,26 @@ import RecentBlog from "@/components/index/RecentBlog.astro";
   </div>
 
   <!-- Table of Content -->
-  <section class="px-8 my-24 space-y-16">
+  <section class="px-8 my-16 md:my-24 space-y-16">
     <div aria-description="Table of Content" class="flex flex-col">
       <header class="space-y-3">
         <h4 class="text-md font-semibold text-text-brand-secondary">
           Table of Content
         </h4>
-        <h3 class="text-display-md font-bold text-text-primary font-sans">
+        <h3
+          class="text-display-sm md:text-display-md font-bold text-text-primary font-sans"
+        >
           สารบัญรวมเนื้อหา สอวน. คอมพิวเตอร์
         </h3>
       </header>
-      <p class="text-xl text-text-tertiary">
+      <p class="text-md md:text-xl text-text-tertiary">
         Spend smarter, lower your bills, get cashback on everything you buy, and
         unlock credit to grow your business.
       </p>
     </div>
-    <div class="flex gap-x-16 px-8 items-center justify-start">
+    <div
+      class="grid grid-flow-row lg:grid-cols-2 gap-y-12 gap-x-16 px-2 md:px-8 items-center justify-start"
+    >
       <div aria-description="feature-section" class="space-y-12 grow basis-0">
         <div class="feature flex gap-3">
           <div class="feature-icon">A</div>
@@ -140,13 +143,15 @@ import RecentBlog from "@/components/index/RecentBlog.astro";
           </div>
         </div>
       </div>
-      <Image
-        src={aboutImage}
-        height={560}
-        width={592}
-        alt="About me Image"
-        class="grow basis-0"
-      />
+      <div class="grow self-stretch">
+        <Image
+          src={aboutImage}
+          height={560}
+          width={592}
+          alt="About me Image"
+          class="grow basis-0"
+        />
+      </div>
     </div>
   </section>
 
