@@ -4,9 +4,9 @@ description: จริงๆโจทย์ข้อนี้ถ้ามอง�
 author: John Doe
 pubDate: Jul 22 2022
 heroImage: /images/post-image3.png
-heroImageAlt: A placeholder image
+heroImageAlt: A stacked water tank
 coverImage: /images/post-image3.png
-coverImageAlt: A placeholder image
+coverImageAlt: A stacked water tank
 tags:
   - first
   - post

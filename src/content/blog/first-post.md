@@ -7,10 +7,10 @@ author: "John Doe"
 pubDate: "Jul 22 2022"
 
 heroImage: "/images/post-image2.png"
-heroImageAlt: "A placeholder image"
+heroImageAlt: "Colorful abstract painting"
 
 coverImage: "/images/post-image2.png"
-coverImageAlt: "A placeholder image"
+coverImageAlt: "Colorful abstract painting"
 
 tags: ["first", "post"]
 ---

@@ -4,9 +4,9 @@ description: Here is a sample of some basic Markdown syntax that can be used whe
 author: John Doe
 pubDate: Jul 22 2022
 heroImage: /blog-placeholder-1.jpg
-heroImageAlt: A placeholder image
+heroImageAlt: Astro logo on the colorful paint
 coverImage: /blog-placeholder-1.jpg
-coverImageAlt: A placeholder image
+coverImageAlt: Astro logo on the colorful paint
 tags:
   - first
   - post
