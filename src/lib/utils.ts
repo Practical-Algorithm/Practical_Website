@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge";
 import type { CollectionEntry } from "astro:content";
 import { z } from "zod";
-import { Authors } from "@/consts";
+import { Authors, type Author } from "@/consts";
 
 type BlogPostType = CollectionEntry<"blog">;
 
@@ -32,20 +32,6 @@ export function formatBlogPost(
     .slice(0, limit ?? blogs.length);
 }
 
-export const schemaForType = <T>() => <S extends z.ZodType<T, any, any>>(
-  arg: S
-) => {
-  return arg;
-};
-
-// use like this:
-const dog = schemaForType<Dog>()(
-  z.object({
-    name: z.string(),
-    neutered: z.boolean(),
-  })
-);
-
 export function getBlogData(blog: BlogPostType) {
   return {
     title: blog.data.title,
@@ -56,6 +42,9 @@ export function getBlogData(blog: BlogPostType) {
     tags: blog.data.tags,
     heroImage: blog.data.heroImage,
     heroImageAlt: blog.data.heroImageAlt,
+    coverImage: blog.data.coverImage,
+    coverImageAlt: blog.data.coverImageAlt,
+    
   };
 }
 
@@ -87,7 +76,7 @@ export function calculateReadingTime(text: string) {
   return formattedAdjustedTime;
 }
 
-export function getAuthorProfile(name: string) {
+export function getAuthorProfile(name: Author) {
   try {
     const author = Authors[name];
     return {

@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import PillBadge from "../ui/PillBadge.astro";
 import type { CollectionEntry } from "astro:content";
 import { formatDateTime, getAuthorProfile } from "@/lib/utils";
+import type { Author } from "@/consts";
 
 type Props = {
   content: CollectionEntry<"blog">["data"];
@@ -10,9 +11,10 @@ type Props = {
 };
 
 const { content, minRead } = Astro.props;
-const { title, pubDate, description, heroImage, author, tags } = content;
+const { title, pubDate, description, heroImage, heroImageAlt, author, tags } =
+  content;
 
-const Author = getAuthorProfile(author);
+const Author = getAuthorProfile(author as Author);
 const {
   name: authorName,
   profile: authorImage,
@@ -70,7 +72,7 @@ const {
       <Image
         class="my-0"
         src={heroImage}
-        alt="Hero image"
+        alt={heroImageAlt}
         width={400}
         height={300}
       />

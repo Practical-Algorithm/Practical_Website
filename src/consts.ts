@@ -30,8 +30,16 @@ export const StaticTexts = {
 export const Authors = {
   Practical: {
     name: "Practical Algorithm",
-    profile: "images/PracticalAlgo_profile.jpg",
-    profileAlt: "Practical Algorithm Profile",
-    bio: "Soft",
+    profile: "/images/PracticalAlgo_profile.jpg",
+    profileAlt: "Practical Algorithm Duck Profile",
+    bio: "ผู้เขียน Algo ก๊าบ",
   },
-};
+  other: {
+    name: "Other",
+    profile: "/images/PracticalAlgo_profile.jpg",
+    profileAlt: "Practical Algorithm Profile",
+    bio: "Quack Quack!",
+  },
+} as const;
+
+export type Author = keyof typeof Authors;

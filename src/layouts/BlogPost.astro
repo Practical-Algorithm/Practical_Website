@@ -25,9 +25,9 @@ const content = Astro.props;
     description,
   }}
 >
-  <body class="bg-bg-primary text-text-primary">
+  <body>
     <Header />
-    <article>
+    <article class="bg-bg-primary text-text-primary">
       <BlogHeader {content} {minRead} />
       <main class="flex lg:flex-row flex-col max-w-screen-lg">
         <aside

@@ -23,26 +23,26 @@ const title: string = `${frontTitle} | Practical Algorithm`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-bg-primary">
   <head>
     <BaseHead title={title} description={description} />
     <script is:inline data-astro-rerun>
       function themeSetting() {
         const theme = (() => {
-          // if (
-          //   typeof localStorage !== "undefined" &&
-          //   localStorage.getItem("theme")
-          // ) {
-          //   return localStorage.getItem("theme");
-          // }
+          if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+          ) {
+            return localStorage.getItem("theme");
+          }
 
-          // if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          //   return "dark";
-          // }
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+          }
 
           return "light";
         })();
-
+        console.log(theme);
         if (theme === "light") {
           document.documentElement.classList.remove("dark");
         } else {
@@ -52,6 +52,7 @@ const title: string = `${frontTitle} | Practical Algorithm`;
         window.localStorage.setItem("theme", theme);
       }
 
+      themeSetting();
       document.addEventListener("astro:beforeload", themeSetting);
     </script>
     <!-- <ViewTransitions /> -->

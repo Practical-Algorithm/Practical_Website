@@ -1,5 +1,4 @@
 import { defineCollection, z } from "astro:content";
-import { schemaForType } from "@/lib/utils";
 
 const blog = defineCollection({
   type: "content",
